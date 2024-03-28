@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _GAME_.Scripts.Core.BehaviorTree;
 using _GAME_.Scripts.Enemy.Nodes;
 using UnityEngine;
+using UnityEngine.AI;
 using Tree = _GAME_.Scripts.Core.BehaviorTree.Tree;
 
 namespace _GAME_.Scripts.Enemy
@@ -27,6 +28,7 @@ namespace _GAME_.Scripts.Enemy
         #region Private Variables
 
         private EnemyAnimateController _enemyAnimateController;
+        private NavMeshAgent _navMeshAgent;
 
         #endregion
 
@@ -35,6 +37,7 @@ namespace _GAME_.Scripts.Enemy
         private void Awake()
         {
             _enemyAnimateController = transform.GetChild(0).GetChild(0).GetComponent<EnemyAnimateController>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         #endregion
@@ -50,23 +53,21 @@ namespace _GAME_.Scripts.Enemy
                     new List<Node>
                     {
                         new CheckPlayerInDamageRangeNode(transform, _enemyAnimateController),
-                        new GiveDamageNode(),
+                        new GiveDamageNode()
                     }),
                 new Sequence
                 (
                     new List<Node>
                     {
-                        new CheckPlayerInFOVRangeNode(transform, layerMask, _enemyAnimateController),
-                        new GoToTargetNode(transform, _enemyAnimateController),
+                        new CheckPlayerInFOVRangeNode(transform, layerMask),
+                        new GoToTargetNode(transform,_enemyAnimateController, _navMeshAgent)
                     }),
-                new PatrolNode(transform, waypoints, _enemyAnimateController),
+                new PatrolNode(transform, waypoints, _enemyAnimateController, _navMeshAgent)
             });
 
             return root;
         }
 
         #endregion
-
-        
     }
 }

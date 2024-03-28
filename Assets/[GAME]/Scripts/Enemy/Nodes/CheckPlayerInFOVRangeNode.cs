@@ -10,17 +10,15 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         private Transform _transform;
         private LayerMask _layerMask;
-        private EnemyAnimateController _enemyAnimateController;
 
         #endregion
 
         #region Constructor
 
-        public CheckPlayerInFOVRangeNode(Transform transform, LayerMask layerMask, EnemyAnimateController enemyAnimateController)
+        public CheckPlayerInFOVRangeNode(Transform transform, LayerMask layerMask)
         {
             _transform = transform;
             _layerMask = layerMask;
-            _enemyAnimateController = enemyAnimateController;
         }
 
         #endregion

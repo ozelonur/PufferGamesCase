@@ -1,5 +1,6 @@
 using _GAME_.Scripts.Core.BehaviorTree;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _GAME_.Scripts.Enemy.Nodes
 {
@@ -11,6 +12,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
         private Transform[] _waypoints;
 
         private EnemyAnimateController _enemyAnimateController;
+        private NavMeshAgent _navMeshAgent;
 
         private int _currentWaypointIndex;
 
@@ -22,11 +24,13 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         #region Constructor
 
-        public PatrolNode(Transform transform, Transform[] waypoints, EnemyAnimateController enemyAnimateController)
+        public PatrolNode(Transform transform, Transform[] waypoints, EnemyAnimateController enemyAnimateController,
+            NavMeshAgent navMeshAgent)
         {
             _transform = transform;
             _waypoints = waypoints;
             _enemyAnimateController = enemyAnimateController;
+            _navMeshAgent = navMeshAgent;
         }
 
         #endregion
@@ -49,7 +53,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
             else
             {
                 Transform waypoint = _waypoints[_currentWaypointIndex];
-                if (Vector3.Distance(_transform.position, waypoint.position) < .01f)
+                if (Vector3.Distance(_transform.position, waypoint.position) < .1f)
                 {
                     _transform.position = waypoint.position;
                     _waitCounter = 0;
@@ -62,9 +66,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 else
                 {
                     _enemyAnimateController.Walk(true);
-                    _transform.position =
-                        Vector3.MoveTowards(_transform.position, waypoint.position, EnemyBehaviorTree.speed * Time.deltaTime);
-                    _transform.LookAt(waypoint.position);
+                    _navMeshAgent.SetDestination(waypoint.position);
                 }
             }
 
