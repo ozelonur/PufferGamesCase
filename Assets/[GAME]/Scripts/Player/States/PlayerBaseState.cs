@@ -19,12 +19,6 @@ namespace _GAME_.Scripts.Player.States
 
         #endregion
 
-        #region Private Variables
-
-        private Vector3 _currentDirection = Vector3.zero;
-
-        #endregion
-
         #region Constructor
 
         public PlayerBaseState(PlayerStateMachine stateMachine)
@@ -43,16 +37,11 @@ namespace _GAME_.Scripts.Player.States
 
         protected void Move(float deltaTime)
         {
-            float rate = 10f;
-
-            _currentDirection = Vector3.Lerp(_currentDirection, input, rate * Time.deltaTime);
-
-
             if (!stateMachine.canLook)
             {
                 rigidBody.MovePosition(moveTransform.position +
                                        input.ToIso() * (input.magnitude * (speed * deltaTime)));
-                playerAnimateController.Move(_currentDirection.ToVector2XZ());
+                playerAnimateController.Move(input.ToVector2XZ());
             }
             else
             {

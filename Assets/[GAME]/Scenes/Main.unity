@@ -773,7 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidBody: {fileID: 1826842100}
   speed: 2
-  turnSpeed: 360
+  turnSpeed: 1080
   canLook: 0
   inputController: {fileID: 0}
   playerAnimateController: {fileID: 0}

@@ -21,7 +21,6 @@ namespace _GAME_.Scripts.Player
 
         private void Awake()
         {
-            Debug.Log("Works here!");
             _playerInputActions = new();
 
             _playerInputActions.Player.Movement.performed += Move;
