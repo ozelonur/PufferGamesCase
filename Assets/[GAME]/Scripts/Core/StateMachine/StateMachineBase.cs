@@ -20,7 +20,7 @@ namespace _GAME_.Scripts.Core.StateMachine
 
         private void FixedUpdate()
         {
-            _currentState?.OnFixedUpdate(Time.deltaTime);
+            _currentState?.OnFixedUpdate(Time.fixedDeltaTime);
         }
 
         #endregion

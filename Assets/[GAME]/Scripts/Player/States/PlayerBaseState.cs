@@ -13,6 +13,7 @@ namespace _GAME_.Scripts.Player.States
         protected PlayerInputController playerInputController;
         protected Rigidbody rigidBody;
         protected Transform moveTransform;
+        protected Transform rotateTransform;
         protected float speed;
 
         protected Vector3 input;
@@ -28,6 +29,7 @@ namespace _GAME_.Scripts.Player.States
             speed = stateMachine.speed;
             playerAnimateController = this.stateMachine.playerAnimateController;
             moveTransform = this.stateMachine.playerMoveTransform;
+            rotateTransform = this.stateMachine.playerRotateTransform;
             playerInputController = this.stateMachine.inputController;
         }
 
@@ -45,7 +47,7 @@ namespace _GAME_.Scripts.Player.States
             }
             else
             {
-                rigidBody.MovePosition(moveTransform.position + moveTransform.forward *
+                rigidBody.MovePosition(moveTransform.position + rotateTransform.forward *
                     (input.magnitude * (speed * deltaTime)));
                 playerAnimateController.Move(input.ToVector2XZ() != Vector2.zero
                     ? new Vector2(0, 1)
@@ -70,8 +72,8 @@ namespace _GAME_.Scripts.Player.States
 
             Quaternion rotation = Quaternion.LookRotation(relative, Vector3.up);
 
-            moveTransform.rotation =
-                Quaternion.RotateTowards(moveTransform.rotation, rotation, stateMachine.turnSpeed * deltaTime);
+            rotateTransform.rotation =
+                Quaternion.RotateTowards(rotateTransform.rotation, rotation, stateMachine.turnSpeed * deltaTime);
         }
 
         #endregion

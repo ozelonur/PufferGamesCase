@@ -17,6 +17,7 @@ namespace _GAME_.Scripts.Player
         [HideInInspector] public PlayerInputController inputController;
         [HideInInspector] public PlayerAnimateController playerAnimateController;
         [HideInInspector] public Transform playerMoveTransform;
+        [HideInInspector] public Transform playerRotateTransform;
 
         #endregion
 
@@ -26,6 +27,7 @@ namespace _GAME_.Scripts.Player
         {
             playerRigidBody = GetComponent<Rigidbody>();
             playerMoveTransform = transform;
+            playerRotateTransform = playerMoveTransform.GetChild(0);
             inputController = GetComponent<PlayerInputController>();
             playerAnimateController =
                 playerMoveTransform.GetChild(0).GetChild(0).GetComponent<PlayerAnimateController>();
