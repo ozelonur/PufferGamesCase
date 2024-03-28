@@ -1,4 +1,5 @@
 using _GAME_.Scripts.Core.StateMachine;
+using _GAME_.Scripts.GlobalVariables;
 using _GAME_.Scripts.Player.States;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ namespace _GAME_.Scripts.Player
 
         private void Start()
         {
+            Roar(CustomEvents.SetPlayerTransform, playerMoveTransform);
             SwitchState(new PlayerMoveState(this));
         }
 

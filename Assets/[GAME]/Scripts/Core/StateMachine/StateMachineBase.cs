@@ -1,8 +1,9 @@
+using OrangeBear.EventSystem;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Core.StateMachine
 {
-    public class StateMachineBase : MonoBehaviour
+    public class StateMachineBase : Bear
     {
         #region Private Variables
 
