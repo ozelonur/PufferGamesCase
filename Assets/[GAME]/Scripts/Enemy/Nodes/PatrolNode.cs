@@ -10,6 +10,8 @@ namespace _GAME_.Scripts.Enemy.Nodes
         private Transform _transform;
         private Transform[] _waypoints;
 
+        private EnemyAnimateController _enemyAnimateController;
+
         private int _currentWaypointIndex;
 
         private float _waitTime = 1f;
@@ -20,10 +22,11 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         #region Constructor
 
-        public PatrolNode(Transform transform, Transform[] waypoints)
+        public PatrolNode(Transform transform, Transform[] waypoints, EnemyAnimateController enemyAnimateController)
         {
             _transform = transform;
             _waypoints = waypoints;
+            _enemyAnimateController = enemyAnimateController;
         }
 
         #endregion
@@ -39,6 +42,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 if (_waitCounter >= _waitTime)
                 {
                     _isWaiting = false;
+                    _enemyAnimateController.Walk(true);
                 }
             }
 
@@ -50,12 +54,14 @@ namespace _GAME_.Scripts.Enemy.Nodes
                     _transform.position = waypoint.position;
                     _waitCounter = 0;
                     _isWaiting = true;
+                    _enemyAnimateController.Walk(false);
 
                     _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
                 }
 
                 else
                 {
+                    _enemyAnimateController.Walk(true);
                     _transform.position =
                         Vector3.MoveTowards(_transform.position, waypoint.position, EnemyBehaviorTree.speed * Time.deltaTime);
                     _transform.LookAt(waypoint.position);
