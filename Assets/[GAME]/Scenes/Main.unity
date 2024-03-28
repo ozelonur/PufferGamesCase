@@ -1142,7 +1142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1710579595
 Transform:
   m_ObjectHideFlags: 0
@@ -1226,8 +1226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidBody: {fileID: 1826842100}
-  speed: 3
-  turnSpeed: 1080
+  speed: 5
+  turnSpeed: 850
   canLook: 1
   inputController: {fileID: 0}
   playerAnimateController: {fileID: 0}
@@ -1433,6 +1433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805343346574599686, guid: 727fd64b818f140228b61dbccf3033a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714732828050186083, guid: 727fd64b818f140228b61dbccf3033a1,
         type: 3}
