@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.orangebear.eventsystem": {
+      "version": "https://github.com/ozelonur/com.orangebear.eventsystem.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c75e0b5b1003a1d0707801e956149ad468a6f98d"
+    },
     "com.unity.burst": {
       "version": "1.8.12",
       "depth": 1,
