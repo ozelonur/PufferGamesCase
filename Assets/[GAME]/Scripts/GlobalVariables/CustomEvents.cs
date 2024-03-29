@@ -6,5 +6,6 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string OnGameFailed = nameof(OnGameFailed);
         
         public const string SetPlayerTransform = nameof(SetPlayerTransform);
+        public const string GetHit = nameof(GetHit);
     }
 }

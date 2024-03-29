@@ -19,7 +19,7 @@ namespace _GAME_.Scripts.Player
 
         private void Awake()
         {
-            _healthPoints = 20;
+            _healthPoints = 50;
             _collider = GetComponent<Collider>();
             _playerAnimateController = transform.GetChild(0).GetChild(0).GetComponent<PlayerAnimateController>();
         }
@@ -36,6 +36,10 @@ namespace _GAME_.Scripts.Player
             if (isDead)
             {
                 Die();
+            }
+            else
+            {
+                Roar(CustomEvents.GetHit);
             }
 
             return isDead;
