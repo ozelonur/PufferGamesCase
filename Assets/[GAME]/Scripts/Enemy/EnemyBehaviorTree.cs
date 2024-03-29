@@ -33,7 +33,7 @@ namespace _GAME_.Scripts.Enemy
 
         #region MonoBehaviour Methods
 
-        private void Awake()
+        protected void Awake()
         {
             _enemyAnimateController = transform.GetChild(0).GetChild(0).GetComponent<EnemyAnimateController>();
             _navMeshAgent = GetComponent<NavMeshAgent>();

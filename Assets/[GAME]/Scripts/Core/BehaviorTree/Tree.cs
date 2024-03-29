@@ -1,8 +1,9 @@
+using OrangeBear.EventSystem;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Core.BehaviorTree
 {
-    public abstract class Tree : MonoBehaviour
+    public abstract class Tree : Bear
     {
         private Node _root;
 

@@ -1,3 +1,4 @@
+using _GAME_.Scripts.GlobalVariables;
 using OrangeBear.EventSystem;
 using UnityEngine;
 
@@ -31,7 +32,6 @@ namespace _GAME_.Scripts.Player
         {
             _healthPoints -= 10;
             bool isDead = _healthPoints <= 0;
-            Debug.Log("Got Hit : " + _healthPoints);
 
             if (isDead)
             {
@@ -47,9 +47,10 @@ namespace _GAME_.Scripts.Player
 
         private void Die()
         {
-            Debug.Log("Player Died!");
             _playerAnimateController.Die();
             _collider.enabled = false;
+            
+            Roar(CustomEvents.OnGameFailed, 3f);
         }
 
         #endregion

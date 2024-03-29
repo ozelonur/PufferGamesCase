@@ -1,4 +1,5 @@
 using _GAME_.Scripts.Core.BehaviorTree;
+using _GAME_.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,6 +42,12 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         public override NodeState Evaluate()
         {
+            if (!GameManager.Instance.IsGameStarted)
+            {
+                state = NodeState.FAILURE;
+                return state;
+            }
+
             if (_isWaiting)
             {
                 _waitCounter += Time.deltaTime;

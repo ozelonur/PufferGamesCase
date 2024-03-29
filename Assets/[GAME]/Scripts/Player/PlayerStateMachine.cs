@@ -36,6 +36,27 @@ namespace _GAME_.Scripts.Player
         private void Start()
         {
             Roar(CustomEvents.SetPlayerTransform, playerMoveTransform);
+        }
+
+        #endregion
+
+        #region Event Methods
+
+        protected override void CheckRoarings(bool status)
+        {
+            if (status)
+            {
+                Register(CustomEvents.OnGameStart, OnGameStart);
+            }
+
+            else
+            {
+                Unregister(CustomEvents.OnGameStart, OnGameStart);
+            }
+        }
+
+        private void OnGameStart(object[] arguments)
+        {
             SwitchState(new PlayerMoveState(this));
         }
 
