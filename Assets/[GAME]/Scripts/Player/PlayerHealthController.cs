@@ -10,6 +10,7 @@ namespace _GAME_.Scripts.Player
         private int _healthPoints;
 
         private Collider _collider;
+        private PlayerAnimateController _playerAnimateController;
 
         #endregion
 
@@ -19,6 +20,7 @@ namespace _GAME_.Scripts.Player
         {
             _healthPoints = 20;
             _collider = GetComponent<Collider>();
+            _playerAnimateController = transform.GetChild(0).GetChild(0).GetComponent<PlayerAnimateController>();
         }
 
         #endregion
@@ -46,6 +48,7 @@ namespace _GAME_.Scripts.Player
         private void Die()
         {
             Debug.Log("Player Died!");
+            _playerAnimateController.Die();
             _collider.enabled = false;
         }
 

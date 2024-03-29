@@ -12,6 +12,7 @@ namespace _GAME_.Scripts.Player
         private static readonly int Speed = Animator.StringToHash("Speed");
 
         private Vector2 _currentDirection = Vector2.zero;
+        private static readonly int DieKey = Animator.StringToHash("Die");
 
         #endregion
 
@@ -57,6 +58,11 @@ namespace _GAME_.Scripts.Player
 
             _animator.SetFloat(MoveX, _currentDirection.x);
             _animator.SetFloat(MoveZ, _currentDirection.y);
+        }
+
+        public void Die()
+        {
+            _animator.SetTrigger(DieKey);
         }
 
         #endregion

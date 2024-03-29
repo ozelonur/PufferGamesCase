@@ -19,7 +19,6 @@ namespace _GAME_.Scripts.Enemy
         #region Public Variables
 
         public Transform[] waypoints;
-        public static float speed = 2;
         public static float fovRange = 10;
         public static float damageRange = 1f;
 
@@ -52,7 +51,7 @@ namespace _GAME_.Scripts.Enemy
                 (
                     new List<Node>
                     {
-                        new CheckPlayerInDamageRangeNode(transform, _enemyAnimateController),
+                        new CheckPlayerInDamageRangeNode(transform, _enemyAnimateController, _navMeshAgent),
                         new GiveDamageNode()
                     }),
                 new Sequence

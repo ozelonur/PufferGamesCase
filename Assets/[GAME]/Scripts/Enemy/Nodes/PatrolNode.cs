@@ -19,6 +19,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
         private float _waitTime = 1f;
         private float _waitCounter;
         private bool _isWaiting;
+        private float _speed;
 
         #endregion
 
@@ -31,6 +32,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
             _waypoints = waypoints;
             _enemyAnimateController = enemyAnimateController;
             _navMeshAgent = navMeshAgent;
+            _speed = _navMeshAgent.speed;
         }
 
         #endregion
@@ -66,6 +68,8 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 else
                 {
                     _enemyAnimateController.Walk(true);
+                    _navMeshAgent.enabled = true;
+                    _navMeshAgent.speed = _speed;
                     _navMeshAgent.SetDestination(waypoint.position);
                 }
             }

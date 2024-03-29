@@ -1,6 +1,7 @@
 using _GAME_.Scripts.Core.BehaviorTree;
 using _GAME_.Scripts.GlobalVariables;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _GAME_.Scripts.Enemy.Nodes
 {
@@ -10,15 +11,18 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         private Transform _transform;
         private EnemyAnimateController _enemyAnimateController;
+        private NavMeshAgent _navMeshAgent;
 
         #endregion
 
         #region Constructor
 
-        public CheckPlayerInDamageRangeNode(Transform transform, EnemyAnimateController enemyAnimateController)
+        public CheckPlayerInDamageRangeNode(Transform transform, EnemyAnimateController enemyAnimateController,
+            NavMeshAgent navMeshAgent)
         {
             _transform = transform;
             _enemyAnimateController = enemyAnimateController;
+            _navMeshAgent = navMeshAgent;
         }
 
         #endregion
@@ -40,6 +44,8 @@ namespace _GAME_.Scripts.Enemy.Nodes
             if (Vector3.Distance(_transform.position, target.position) <= EnemyBehaviorTree.damageRange)
             {
                 _enemyAnimateController.Walk(false);
+                _navMeshAgent.speed = 0;
+                _navMeshAgent.enabled = false;
                 state = NodeState.SUCCESS;
                 return state;
             }

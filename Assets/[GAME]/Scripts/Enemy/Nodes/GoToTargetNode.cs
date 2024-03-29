@@ -13,6 +13,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
         private Vector3 _startPosition = Vector3.zero;
         private EnemyAnimateController _enemyAnimateController;
         private NavMeshAgent _navMeshAgent;
+        private float _speed;
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
             _transform = transform;
             _enemyAnimateController = enemyAnimateController;
             _navMeshAgent = navMeshAgent;
+            _speed = _navMeshAgent.speed;
         }
 
         #endregion
@@ -47,10 +49,17 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 ClearData(DataContextKey.TARGET);
             }
 
-            if (Vector3.Distance(_transform.position, target.position) > .1f)
+            if (Vector3.Distance(_transform.position, target.position) > 1f)
             {
+                _navMeshAgent.enabled = true;
+                _navMeshAgent.speed = _speed;
                 _enemyAnimateController.Walk(true);
                 _navMeshAgent.SetDestination(target.position);
+            }
+            else
+            {
+                _navMeshAgent.speed = 0;
+                _navMeshAgent.enabled = false;
             }
 
             state = NodeState.RUNNING;
