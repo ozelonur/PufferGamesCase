@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerShootState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerShootState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +97,7 @@
       <updated>1711637398677</updated>
       <workItem from="1711637400516" duration="17529000" />
       <workItem from="1711732272565" duration="5698000" />
-      <workItem from="1711806423669" duration="9122000" />
+      <workItem from="1711806423669" duration="10781000" />
     </task>
     <servers />
   </component>

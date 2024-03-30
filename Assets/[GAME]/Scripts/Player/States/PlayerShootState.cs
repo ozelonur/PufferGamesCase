@@ -1,3 +1,4 @@
+using System.Linq;
 using _GAME_.Scripts.Extensions;
 using _GAME_.Scripts.Managers;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace _GAME_.Scripts.Player.States
 
         private Transform _target;
         private float _rotationSpeed = 5;
-        public float _rotationThreshold = 0.01f;
+        public float _rotationThreshold = 0.1f;
+        private float _shortestDistance = float.MaxValue;
 
         #endregion
 
@@ -32,13 +34,12 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnUpdate(float deltaTime)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(_target.position - rotateTransform.position);
+            input = playerInputController.moveVector.ToVector3XZ();
+            CheckTargets();
 
-            rotateTransform.rotation =
-                Quaternion.Slerp(rotateTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-
-            if (Quaternion.Dot(rotateTransform.rotation, targetRotation) > _rotationThreshold)
+            if (RotateToTheTargetAndGetReachStatus())
             {
+                playerAnimateController.IdlingShoot(input == Vector3.zero);
                 playerAnimateController.SetLayerWeight(1, 1);
                 playerAnimateController.Shoot(true);
             }
@@ -46,11 +47,9 @@ namespace _GAME_.Scripts.Player.States
             {
                 playerAnimateController.SetLayerWeight(1, 0);
                 playerAnimateController.Shoot(false);
+                playerAnimateController.IdlingShoot(false);
             }
 
-            input = playerInputController.moveVector.ToVector3XZ();
-
-            playerAnimateController.IdlingShoot(input == Vector3.zero);
         }
 
         public override void OnFixedUpdate(float fixedDeltaTime)
@@ -69,6 +68,54 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnDrawGizmos()
         {
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void CheckTargets()
+        {
+            Collider[] colliders = Physics.OverlapSphere(moveTransform.position, visionRadius, targetLayerMask);
+
+            if (!colliders.Contains(_target.GetComponent<Collider>()))
+            {
+                _target = null;
+            }
+
+            _shortestDistance = float.MaxValue;
+
+            foreach (Collider collider in colliders)
+            {
+                float distance = Vector3.Distance(moveTransform.position, collider.transform.position);
+
+                if (distance < _shortestDistance)
+                {
+                    _shortestDistance = distance;
+                    Collider nearestCollider = collider;
+
+                    if (_target.transform != nearestCollider.transform)
+                    {
+                        _target = nearestCollider.transform;
+                    }
+                }
+            }
+        }
+
+        private bool RotateToTheTargetAndGetReachStatus()
+        {
+            if (_target == null)
+            {
+                stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+                return false;
+            }
+            
+            Quaternion targetRotation = Quaternion.LookRotation(_target.position - rotateTransform.position);
+
+            rotateTransform.rotation =
+                Quaternion.Slerp(rotateTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+
+            return Quaternion.Dot(rotateTransform.rotation, targetRotation) > _rotationThreshold;
         }
 
         #endregion
