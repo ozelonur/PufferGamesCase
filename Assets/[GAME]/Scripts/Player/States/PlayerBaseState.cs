@@ -46,10 +46,6 @@ namespace _GAME_.Scripts.Player.States
         {
             if (!stateMachine.canLook)
             {
-                // rigidBody.MovePosition(moveTransform.position +
-                //                        input.ToIso() * (input.magnitude * (speed * deltaTime)));
-                // playerAnimateController.Move(input.ToVector2XZ());
-
                 rigidBody.MovePosition(moveTransform.position + rotateTransform.forward *
                     (input.magnitude * (speed * deltaTime)));
                 playerAnimateController.Move(input.ToVector2XZ() != Vector2.zero
