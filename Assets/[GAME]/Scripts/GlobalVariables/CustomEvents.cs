@@ -8,5 +8,6 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string SetPlayerTransform = nameof(SetPlayerTransform);
         public const string GetHit = nameof(GetHit);
         public const string Shot = nameof(Shot);
+        public const string VisionRangeVisibility = nameof(VisionRangeVisibility);
     }
 }

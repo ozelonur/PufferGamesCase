@@ -1,14 +1,15 @@
+using _GAME_.Scripts.GlobalVariables;
+using OrangeBear.EventSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _GAME_.Scripts.Player
 {
-    public class PlayerInputController : MonoBehaviour
+    public class PlayerInputController : Bear
     {
         #region Public Variables
 
         public Vector2 moveVector;
-        public Vector2 mouseDelta;
 
         #endregion
 
@@ -25,17 +26,20 @@ namespace _GAME_.Scripts.Player
             _playerInputActions = new();
 
             _playerInputActions.Player.Movement.performed += Move;
-            _playerInputActions.Player.Look.performed += MouseLookPerformed;
+            _playerInputActions.Player.AttackRange.performed += RangeIndicator;
             _playerInputActions.Player.Movement.canceled += Move;
+            _playerInputActions.Player.AttackRange.canceled += RangeIndicator;
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             _playerInputActions.Enable();
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             _playerInputActions.Disable();
         }
 
@@ -53,9 +57,17 @@ namespace _GAME_.Scripts.Player
             };
         }
 
-        private void MouseLookPerformed(InputAction.CallbackContext context)
+        private void RangeIndicator(InputAction.CallbackContext context)
         {
-            mouseDelta = context.ReadValue<Vector2>();
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                    Roar(CustomEvents.VisionRangeVisibility, true);
+                    break;
+                case InputActionPhase.Canceled:
+                    Roar(CustomEvents.VisionRangeVisibility, false);
+                    break;
+            }
         }
 
         #endregion
