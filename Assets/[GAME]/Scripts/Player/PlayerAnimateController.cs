@@ -16,6 +16,7 @@ namespace _GAME_.Scripts.Player
         private Vector2 _currentDirection = Vector2.zero;
         private static readonly int DieKey = Animator.StringToHash("Die");
         private static readonly int ShootKey = Animator.StringToHash("Shoot");
+        private static readonly int IdlingShootKey = Animator.StringToHash("IdlingShoot");
 
         #endregion
 
@@ -42,6 +43,11 @@ namespace _GAME_.Scripts.Player
         public void Shoot(bool status)
         {
             _animator.SetBool(ShootKey, status);
+        }
+
+        public void IdlingShoot(bool status)
+        {
+            _animator.SetBool(IdlingShootKey, status);
         }
 
         public void Die()

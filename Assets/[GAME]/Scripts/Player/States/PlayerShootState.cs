@@ -49,6 +49,8 @@ namespace _GAME_.Scripts.Player.States
             }
 
             input = playerInputController.moveVector.ToVector3XZ();
+
+            playerAnimateController.IdlingShoot(input == Vector3.zero);
         }
 
         public override void OnFixedUpdate(float fixedDeltaTime)
