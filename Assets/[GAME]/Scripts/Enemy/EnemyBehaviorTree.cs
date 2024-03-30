@@ -19,7 +19,7 @@ namespace _GAME_.Scripts.Enemy
         #region Public Variables
 
         public Transform[] waypoints;
-        public static float fovRange = 5;
+        public static float fovRange = 2.5f;
         public static float damageRange = 1f;
 
         #endregion

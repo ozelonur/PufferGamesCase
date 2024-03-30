@@ -13,7 +13,7 @@ namespace _GAME_.Scripts.Player
         public float speed;
         public float turnSpeed = 360;
         public float mouseSensitivity = 50;
-        public float visionRadius = 10;
+        public float visionRadius = 5;
         public bool canLook;
         public LayerMask targetLayerMask;
 
