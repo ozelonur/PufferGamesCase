@@ -23,6 +23,11 @@ namespace _GAME_.Scripts.Core.StateMachine
             _currentState?.OnFixedUpdate(Time.fixedDeltaTime);
         }
 
+        private void OnDrawGizmos()
+        {
+            _currentState?.OnDrawGizmos();
+        }
+
         #endregion
 
         #region Public Methods

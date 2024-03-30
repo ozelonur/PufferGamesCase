@@ -1,10 +1,17 @@
 using _GAME_.Scripts.Extensions;
 using _GAME_.Scripts.Managers;
+using UnityEngine;
 
 namespace _GAME_.Scripts.Player.States
 {
     public class PlayerMoveState : PlayerBaseState
     {
+        #region Private Variables
+
+        private float _shortestDistance = float.MaxValue;
+
+        #endregion
+
         #region Inherit Methods
 
         public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -23,8 +30,30 @@ namespace _GAME_.Scripts.Player.States
                 return;
             }
 
+            Collider[] colliders = Physics.OverlapSphere(moveTransform.position, visionRadius, targetLayerMask);
+            
+
+            Collider nearestCollider = null;
+            _shortestDistance = float.MaxValue;
+
+            foreach (Collider collider in colliders)
+            {
+                float distance = Vector3.Distance(moveTransform.position, collider.transform.position);
+
+                if (distance < _shortestDistance)
+                {
+                    _shortestDistance = distance;
+                    nearestCollider = collider;
+                }
+            }
+
+            if (nearestCollider != null)
+            {
+                stateMachine.SwitchState(new PlayerShootState(stateMachine, nearestCollider.transform));
+            }
+
+
             input = playerInputController.moveVector.ToVector3XZ();
-            mouseDelta = playerInputController.mouseDelta;
             Look(deltaTime);
         }
 
@@ -40,6 +69,12 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnExit()
         {
+        }
+
+        public override void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(moveTransform.position, visionRadius);
         }
 
         #endregion

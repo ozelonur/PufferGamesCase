@@ -6,9 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/AvatarMasks/PlayerTopAvatarMask.mask" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/AvatarMasks/PlayerTopAvatarMask.mask" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Core/StateMachine/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Core/StateMachine/State.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Core/StateMachine/StateMachineBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Core/StateMachine/StateMachineBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/GlobalVariables/CustomEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/GlobalVariables/CustomEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerStateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerBaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerBaseState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerMoveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerMoveState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +28,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/FastIK/Scripts/Sample/SampleProcedualAnimation.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -96,7 +110,7 @@
       <updated>1711637398677</updated>
       <workItem from="1711637400516" duration="17529000" />
       <workItem from="1711732272565" duration="5698000" />
-      <workItem from="1711806423669" duration="2255000" />
+      <workItem from="1711806423669" duration="8500000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,11 @@
+using _GAME_.Scripts.GlobalVariables;
+using JetBrains.Annotations;
+using OrangeBear.EventSystem;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Player
 {
-    public class PlayerAnimateController : MonoBehaviour
+    public class PlayerAnimateController : Bear
     {
         #region Private Variables
 
@@ -12,6 +15,7 @@ namespace _GAME_.Scripts.Player
 
         private Vector2 _currentDirection = Vector2.zero;
         private static readonly int DieKey = Animator.StringToHash("Die");
+        private static readonly int ShootKey = Animator.StringToHash("Shoot");
 
         #endregion
 
@@ -35,9 +39,29 @@ namespace _GAME_.Scripts.Player
             _animator.SetFloat(MoveZ, _currentDirection.y);
         }
 
+        public void Shoot(bool status)
+        {
+            _animator.SetBool(ShootKey, status);
+        }
+
         public void Die()
         {
             _animator.SetTrigger(DieKey);
+        }
+
+        public void SetLayerWeight(int index, float weight)
+        {
+            _animator.SetLayerWeight(index, weight);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        [UsedImplicitly]
+        private void Shot()
+        {
+            Roar(CustomEvents.Shot);
         }
 
         #endregion

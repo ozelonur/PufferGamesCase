@@ -15,12 +15,13 @@ namespace _GAME_.Scripts.Player.States
         protected Transform moveTransform;
         protected Transform rotateTransform;
         protected Camera mainCamera;
+        protected LayerMask targetLayerMask;
         
         
         protected float speed;
+        protected float visionRadius;
 
         protected Vector3 input;
-        protected Vector2 mouseDelta;
 
         #endregion
 
@@ -36,6 +37,8 @@ namespace _GAME_.Scripts.Player.States
             rotateTransform = this.stateMachine.playerRotateTransform;
             playerInputController = this.stateMachine.inputController;
             mainCamera = Camera.main;
+            visionRadius = this.stateMachine.visionRadius;
+            targetLayerMask = stateMachine.targetLayerMask;
         }
 
         #endregion
