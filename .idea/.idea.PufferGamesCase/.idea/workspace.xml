@@ -6,30 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Dying.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Dying.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Idle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Idle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/LeftStrafe.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/LeftStrafe.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/LeftStrafeWalking.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/LeftStrafeWalking.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/RightStrafe.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/RightStrafe.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/RightStrafeWalking.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/RightStrafeWalking.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Running.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Running.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/RunningBack.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/RunningBack.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Walking.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/Walking.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/WalkingBackward.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animations/Player/WalkingBackward.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Player/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerInputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerInputController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerBaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerBaseState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerMoveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerMoveState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

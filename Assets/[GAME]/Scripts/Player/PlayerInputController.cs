@@ -8,6 +8,7 @@ namespace _GAME_.Scripts.Player
         #region Public Variables
 
         public Vector2 moveVector;
+        public Vector2 mouseDelta;
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace _GAME_.Scripts.Player
             _playerInputActions = new();
 
             _playerInputActions.Player.Movement.performed += Move;
+            _playerInputActions.Player.Look.performed += MouseLookPerformed;
             _playerInputActions.Player.Movement.canceled += Move;
         }
 
@@ -49,6 +51,11 @@ namespace _GAME_.Scripts.Player
                 InputActionPhase.Canceled => Vector2.zero,
                 _ => moveVector
             };
+        }
+
+        private void MouseLookPerformed(InputAction.CallbackContext context)
+        {
+            mouseDelta = context.ReadValue<Vector2>();
         }
 
         #endregion

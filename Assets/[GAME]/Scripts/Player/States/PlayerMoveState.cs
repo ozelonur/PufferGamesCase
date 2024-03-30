@@ -18,6 +18,7 @@ namespace _GAME_.Scripts.Player.States
         public override void OnUpdate(float deltaTime)
         {
             input = playerInputController.moveVector.ToVector3XZ();
+            mouseDelta = playerInputController.mouseDelta;
             Look(deltaTime);
         }
 

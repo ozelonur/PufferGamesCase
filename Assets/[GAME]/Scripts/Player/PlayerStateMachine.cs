@@ -12,6 +12,7 @@ namespace _GAME_.Scripts.Player
         public Rigidbody playerRigidBody;
         public float speed;
         public float turnSpeed = 360;
+        public float mouseSensitivity = 50;
         public bool canLook;
 
         [HideInInspector] public PlayerInputController inputController;
