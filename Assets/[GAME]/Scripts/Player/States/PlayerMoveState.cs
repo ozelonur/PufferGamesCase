@@ -1,4 +1,5 @@
 using _GAME_.Scripts.Extensions;
+using _GAME_.Scripts.Managers;
 
 namespace _GAME_.Scripts.Player.States
 {
@@ -17,6 +18,11 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnUpdate(float deltaTime)
         {
+            if (!GameManager.Instance.IsGameStarted || GameManager.Instance.IsGameFailed)
+            {
+                return;
+            }
+
             input = playerInputController.moveVector.ToVector3XZ();
             mouseDelta = playerInputController.mouseDelta;
             Look(deltaTime);
@@ -24,6 +30,11 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnFixedUpdate(float fixedDeltaTime)
         {
+            if (!GameManager.Instance.IsGameStarted || GameManager.Instance.IsGameFailed)
+            {
+                return;
+            }
+
             Move(fixedDeltaTime);
         }
 

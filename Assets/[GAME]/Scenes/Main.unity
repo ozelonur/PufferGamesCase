@@ -325,7 +325,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -1723,7 +1723,7 @@ PrefabInstance:
     - target: {fileID: 5719734536760581751, guid: ddbe8ac66bfb841f5866c4723cad40d0,
         type: 3}
       propertyPath: mouseSensitivity
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

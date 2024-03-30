@@ -14,6 +14,9 @@ namespace _GAME_.Scripts.Player.States
         protected Rigidbody rigidBody;
         protected Transform moveTransform;
         protected Transform rotateTransform;
+        protected Camera mainCamera;
+        
+        
         protected float speed;
 
         protected Vector3 input;
@@ -32,6 +35,7 @@ namespace _GAME_.Scripts.Player.States
             moveTransform = this.stateMachine.playerMoveTransform;
             rotateTransform = this.stateMachine.playerRotateTransform;
             playerInputController = this.stateMachine.inputController;
+            mainCamera = Camera.main;
         }
 
         #endregion
@@ -75,16 +79,22 @@ namespace _GAME_.Scripts.Player.States
         {
             if (stateMachine.canLook)
             {
-                if (mouseDelta == Vector2.zero)
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    return;
+                    if (Vector3.Distance(moveTransform.position, hit.transform.position) < 2f)
+                    {
+                        return;
+                    }
+
+                    Vector3 lookAtTarget = hit.point;
+                    lookAtTarget.y = rotateTransform.position.y;
+                    Quaternion targetRotation = Quaternion.LookRotation(lookAtTarget - rotateTransform.position);
+
+                    rotateTransform.rotation = Quaternion.Slerp(rotateTransform.rotation, targetRotation,
+                        stateMachine.mouseSensitivity * Time.deltaTime);
                 }
-
-                float yaw = mouseDelta.x * stateMachine.mouseSensitivity * deltaTime;
-
-                Quaternion newRotation = Quaternion.Euler(0f, yaw, 0f) * rotateTransform.rotation;
-
-                rotateTransform.rotation = newRotation;
             }
 
             else
