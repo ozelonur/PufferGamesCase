@@ -9,5 +9,9 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string GetHit = nameof(GetHit);
         public const string Shot = nameof(Shot);
         public const string VisionRangeVisibility = nameof(VisionRangeVisibility);
+        public const string Reload = nameof(Reload);
+        public const string GenerateMagazine = nameof(GenerateMagazine);
+        public const string DropMagazine = nameof(DropMagazine);
+        public const string InsertMagazine = nameof(InsertMagazine);
     }
 }

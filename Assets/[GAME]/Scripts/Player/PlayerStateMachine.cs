@@ -16,12 +16,14 @@ namespace _GAME_.Scripts.Player
         public float visionRadius = 5;
         public bool canLook;
         public LayerMask targetLayerMask;
+        public int magazineCapacity = 30;
 
         [HideInInspector] public PlayerInputController inputController;
         [HideInInspector] public PlayerAnimateController playerAnimateController;
         [HideInInspector] public Transform playerMoveTransform;
         [HideInInspector] public Transform playerRotateTransform;
         [SerializeField] public Transform weaponTransform;
+        [SerializeField] public int currentBulletCount;
 
         #endregion
 
@@ -29,6 +31,7 @@ namespace _GAME_.Scripts.Player
 
         private void Awake()
         {
+            currentBulletCount = magazineCapacity;
             playerRigidBody = GetComponent<Rigidbody>();
             playerMoveTransform = transform;
             playerRotateTransform = playerMoveTransform.GetChild(0);
@@ -51,12 +54,33 @@ namespace _GAME_.Scripts.Player
             if (status)
             {
                 Register(CustomEvents.OnGameStart, OnGameStart);
+                Register(CustomEvents.Shot, Shot);
+                Register(CustomEvents.Reload, Reload);
             }
 
             else
             {
                 Unregister(CustomEvents.OnGameStart, OnGameStart);
+                Unregister(CustomEvents.Shot, Shot);
+                Unregister(CustomEvents.Reload, Reload);
             }
+        }
+
+        private void Reload(object[] arguments)
+        {
+            currentBulletCount = magazineCapacity;
+        }
+
+        private void Shot(object[] arguments)
+        {
+            if (currentBulletCount <= 0)
+            {
+                playerAnimateController.SetLayerWeight(1,1);
+                playerAnimateController.Reload();
+                return;
+            }
+
+            currentBulletCount--;
         }
 
         private void OnGameStart(object[] arguments)
