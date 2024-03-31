@@ -15,7 +15,7 @@ namespace _GAME_.Scripts.Player.States
         protected Transform moveTransform;
         protected Transform rotateTransform;
         protected Transform weaponTransform;
-        protected Camera mainCamera;
+        protected UnityEngine.Camera mainCamera;
         protected LayerMask targetLayerMask;
         
         
@@ -37,7 +37,7 @@ namespace _GAME_.Scripts.Player.States
             moveTransform = this.stateMachine.playerMoveTransform;
             rotateTransform = this.stateMachine.playerRotateTransform;
             playerInputController = this.stateMachine.inputController;
-            mainCamera = Camera.main;
+            mainCamera = UnityEngine.Camera.main;
             visionRadius = this.stateMachine.visionRadius;
             targetLayerMask = stateMachine.targetLayerMask;
             weaponTransform = stateMachine.weaponTransform;
