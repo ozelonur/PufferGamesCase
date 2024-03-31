@@ -27,6 +27,7 @@ namespace _GAME_.Scripts.Enemy
         #region Private Variables
 
         private EnemyAnimateController _enemyAnimateController;
+        private EnemyHealthController _enemyHealthController;
         private NavMeshAgent _navMeshAgent;
 
         #endregion
@@ -36,6 +37,7 @@ namespace _GAME_.Scripts.Enemy
         protected void Awake()
         {
             _enemyAnimateController = transform.GetChild(0).GetChild(0).GetComponent<EnemyAnimateController>();
+            _enemyHealthController = GetComponent<EnemyHealthController>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
@@ -47,6 +49,7 @@ namespace _GAME_.Scripts.Enemy
         {
             Node root = new Selector(new List<Node>
             {
+                new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent),
                 new Sequence
                 (
                     new List<Node>

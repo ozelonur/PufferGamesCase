@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _GAME_.Scripts.Enemy;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Player.Bullet
@@ -51,21 +52,42 @@ namespace _GAME_.Scripts.Player.Bullet
             bulletRigidBody.position += (transform.forward) * (speed * Time.deltaTime);
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
             if (collided)
             {
                 return;
             }
 
+            if (other.transform.TryGetComponent(out EnemyHealthController enemy))
+            {
+                enemy.TakeDamage(5);
+            }
+
             collided = true;
+            Destroy(gameObject);
+        }
 
-            speed = 0;
-            GetComponent<Rigidbody>().isKinematic = true;
-
-            ContactPoint contact = other.contacts[0];
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            Vector3 pos = contact.point;
+        private void OnCollisionEnter(Collision other)
+        {
+            // if (collided)
+            // {
+            //     return;
+            // }
+            //
+            // if (other.transform.TryGetComponent(out EnemyHealthController enemy))
+            // {
+            //     enemy.TakeDamage(5);
+            // }
+            //
+            // collided = true;
+            //
+            // speed = 0;
+            // GetComponent<Rigidbody>().isKinematic = true;
+            //
+            // ContactPoint contact = other.contacts[0];
+            // Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            // Vector3 pos = contact.point;
 
             // if (hitPrefab != null)
             // {
@@ -83,7 +105,7 @@ namespace _GAME_.Scripts.Player.Bullet
             // }
 
             // StartCoroutine(DestroyParticle(0f));
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
         #endregion
