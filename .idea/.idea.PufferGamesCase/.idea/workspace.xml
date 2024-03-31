@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GabrielAguiarProductions/Unique_Projectiles_Volume_1/Prefabs/Projectiles/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GabrielAguiarProductions/Unique_Projectiles_Volume_1/Prefabs/Projectiles/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DamageNumbersPro/Demo/DNP_3D_URP.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DamageNumbersPro/Demo/DNP_3D_URP.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DamageNumbersPro/Materials/Bloody/Blood-Thick.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DamageNumbersPro/Materials/Bloody/Blood-Thick.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animators/Enemy/EnemyAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Animators/Enemy/EnemyAnimatorController.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyAnimateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyAnimateController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/Bullet/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/Bullet/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyHealthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyHealthController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <updated>1711637398677</updated>
       <workItem from="1711637400516" duration="17529000" />
       <workItem from="1711732272565" duration="5698000" />
-      <workItem from="1711806423669" duration="25845000" />
+      <workItem from="1711806423669" duration="26768000" />
     </task>
     <servers />
   </component>

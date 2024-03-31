@@ -1,3 +1,4 @@
+using DamageNumbersPro;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Enemy
@@ -5,6 +6,9 @@ namespace _GAME_.Scripts.Enemy
     public class EnemyHealthController : MonoBehaviour
     {
         #region Serialized Fields
+
+        [Header("Components")] [SerializeField]
+        private DamageNumber damageNumber;
 
         [Header("Configurations")] [SerializeField]
         private int maxHealth;
@@ -43,6 +47,8 @@ namespace _GAME_.Scripts.Enemy
         {
             _currentHealth -= damage;
             IsDamaged = true;
+            
+            damageNumber.Spawn(transform.position + Vector3.up, damage);
 
             if (_currentHealth <= 0)
             {

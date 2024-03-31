@@ -82,30 +82,30 @@ namespace _GAME_.Scripts.Player.Bullet
             //
             // collided = true;
             //
-            // speed = 0;
-            // GetComponent<Rigidbody>().isKinematic = true;
-            //
-            // ContactPoint contact = other.contacts[0];
-            // Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            // Vector3 pos = contact.point;
+            speed = 0;
+            GetComponent<Rigidbody>().isKinematic = true;
+            
+            ContactPoint contact = other.contacts[0];
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            Vector3 pos = contact.point;
 
-            // if (hitPrefab != null)
-            // {
-            //     GameObject hitVFX = Instantiate(hitPrefab, pos, rot);
-            //     hitVFX.transform.parent = other.transform;
-            //
-            //     ParticleSystem ps = hitVFX.GetComponent<ParticleSystem>();
-            //     if (ps == null)
-            //     {
-            //         ParticleSystem psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-            //         Destroy(hitVFX, psChild.main.duration);
-            //     }
-            //     else
-            //         Destroy(hitVFX, ps.main.duration);
-            // }
+            if (hitPrefab != null)
+            {
+                GameObject hitVFX = Instantiate(hitPrefab, pos, rot);
+                hitVFX.transform.parent = other.transform;
+            
+                ParticleSystem ps = hitVFX.GetComponent<ParticleSystem>();
+                if (ps == null)
+                {
+                    ParticleSystem psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitVFX, psChild.main.duration);
+                }
+                else
+                    Destroy(hitVFX, ps.main.duration);
+            }
 
             // StartCoroutine(DestroyParticle(0f));
-            // Destroy(gameObject);
+            Destroy(gameObject);
         }
 
         #endregion

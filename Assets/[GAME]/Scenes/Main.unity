@@ -1694,6 +1694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5709a9247710481e94417d0f878828b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageNumber: {fileID: 37343986978311400, guid: b37c83d164dfd4912aea0d94796d17d3,
+    type: 3}
   maxHealth: 100
 --- !u!1001 &156946822404647916
 PrefabInstance:
