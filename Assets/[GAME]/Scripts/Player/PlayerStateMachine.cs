@@ -21,6 +21,7 @@ namespace _GAME_.Scripts.Player
         [HideInInspector] public PlayerAnimateController playerAnimateController;
         [HideInInspector] public Transform playerMoveTransform;
         [HideInInspector] public Transform playerRotateTransform;
+        [SerializeField] public Transform weaponTransform;
 
         #endregion
 

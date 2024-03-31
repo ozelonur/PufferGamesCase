@@ -154,6 +154,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1710579595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &169314445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5685406358457686929, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 156946822404647916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291864555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,7 +1659,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3357707027099497604}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1910948391
+--- !u!136 &1910948401
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1734,11 +1740,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3466517227011009163, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3466517227011009163, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3466517227011009163, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5198330578202117744, guid: ddbe8ac66bfb841f5866c4723cad40d0,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5719734536760581751, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: visionRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719734536760581751, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: weaponTransform
+      value: 
+      objectReference: {fileID: 169314445}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3564,7 +3595,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5805343346574599686, guid: 727fd64b818f140228b61dbccf3033a1,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1910948391}
+      addedObject: {fileID: 1910948401}
   m_SourcePrefab: {fileID: 100100000, guid: 727fd64b818f140228b61dbccf3033a1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

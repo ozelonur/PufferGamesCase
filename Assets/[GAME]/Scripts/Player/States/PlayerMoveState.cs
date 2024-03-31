@@ -21,6 +21,7 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnEnter()
         {
+            Debug.Log("Move State!");
         }
 
         public override void OnUpdate(float deltaTime)
@@ -54,7 +55,7 @@ namespace _GAME_.Scripts.Player.States
 
 
             input = playerInputController.moveVector.ToVector3XZ();
-            Look(deltaTime);
+            // Look(deltaTime);
         }
 
         public override void OnFixedUpdate(float fixedDeltaTime)

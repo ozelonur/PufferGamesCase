@@ -11,7 +11,7 @@ namespace _GAME_.Scripts.Player.States
 
         private Transform _target;
         private float _rotationSpeed = 5;
-        public float _rotationThreshold = 0.1f;
+        public float _rotationThreshold = 0.01f;
         private float _shortestDistance = float.MaxValue;
 
         #endregion
@@ -39,7 +39,7 @@ namespace _GAME_.Scripts.Player.States
 
             if (RotateToTheTargetAndGetReachStatus())
             {
-                playerAnimateController.IdlingShoot(input == Vector3.zero);
+                // playerAnimateController.IdlingShoot(input == Vector3.zero);
                 playerAnimateController.SetLayerWeight(1, 1);
                 playerAnimateController.Shoot(true);
             }
@@ -47,7 +47,7 @@ namespace _GAME_.Scripts.Player.States
             {
                 playerAnimateController.SetLayerWeight(1, 0);
                 playerAnimateController.Shoot(false);
-                playerAnimateController.IdlingShoot(false);
+                // playerAnimateController.IdlingShoot(false);
             }
 
         }
@@ -109,14 +109,26 @@ namespace _GAME_.Scripts.Player.States
                 stateMachine.SwitchState(new PlayerMoveState(stateMachine));
                 return false;
             }
-            
-            Quaternion targetRotation = Quaternion.LookRotation(_target.position - rotateTransform.position);
 
-            rotateTransform.rotation =
-                Quaternion.Slerp(rotateTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.LookRotation(_target.position - rotateTransform.position);
+    
+            Vector3 targetLocalPosition = weaponTransform.InverseTransformPoint(_target.position);
+    
+            if (targetLocalPosition.x < 0)
+            {
+                targetRotation *= Quaternion.Euler(0, -10f, 0);
+            }
+            else
+            {
+                targetRotation *= Quaternion.Euler(0, 10f, 0);
+            }
+
+            rotateTransform.rotation = Quaternion.Slerp(rotateTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
             return Quaternion.Dot(rotateTransform.rotation, targetRotation) > _rotationThreshold;
         }
+
+
 
         #endregion
     }
