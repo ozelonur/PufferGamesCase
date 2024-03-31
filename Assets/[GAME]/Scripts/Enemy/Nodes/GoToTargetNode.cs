@@ -13,6 +13,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
         private Transform _transform;
         private Vector3 _startPosition = Vector3.zero;
         private EnemyAnimateController _enemyAnimateController;
+        private EnemyHealthController _enemyHealthController;
         private NavMeshAgent _navMeshAgent;
         private float _speed;
 
@@ -21,10 +22,11 @@ namespace _GAME_.Scripts.Enemy.Nodes
         #region Constructor
 
         public GoToTargetNode(Transform transform, EnemyAnimateController enemyAnimateController,
-            NavMeshAgent navMeshAgent)
+            NavMeshAgent navMeshAgent, EnemyHealthController enemyHealthController)
         {
             _transform = transform;
             _enemyAnimateController = enemyAnimateController;
+            _enemyHealthController = enemyHealthController;
             _navMeshAgent = navMeshAgent;
             _speed = _navMeshAgent.speed;
         }
@@ -40,6 +42,13 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 state = NodeState.FAILURE;
                 return state;
             }
+
+            if (_enemyHealthController.IsDead)
+            {
+                state = NodeState.FAILURE;
+                return state;
+            }
+
             Transform target = (Transform)GetData(DataContextKey.TARGET);
 
             if (_startPosition == Vector3.zero)

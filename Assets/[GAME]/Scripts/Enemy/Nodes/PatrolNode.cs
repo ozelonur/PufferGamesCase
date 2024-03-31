@@ -13,6 +13,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
         private Transform[] _waypoints;
 
         private EnemyAnimateController _enemyAnimateController;
+        private EnemyHealthController _enemyHealthController;
         private NavMeshAgent _navMeshAgent;
 
         private int _currentWaypointIndex;
@@ -27,13 +28,14 @@ namespace _GAME_.Scripts.Enemy.Nodes
         #region Constructor
 
         public PatrolNode(Transform transform, Transform[] waypoints, EnemyAnimateController enemyAnimateController,
-            NavMeshAgent navMeshAgent)
+            NavMeshAgent navMeshAgent, EnemyHealthController enemyHealthController)
         {
             _transform = transform;
             _waypoints = waypoints;
             _enemyAnimateController = enemyAnimateController;
             _navMeshAgent = navMeshAgent;
             _speed = _navMeshAgent.speed;
+            _enemyHealthController = enemyHealthController;
         }
 
         #endregion
@@ -48,6 +50,12 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 return state;
             }
 
+            if (_enemyHealthController.IsDead)
+            {
+                state = NodeState.FAILURE;
+                return state;
+            }
+
             if (_isWaiting)
             {
                 _waitCounter += Time.deltaTime;
@@ -56,6 +64,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 {
                     _isWaiting = false;
                     _enemyAnimateController.Walk(true);
+                    _navMeshAgent.speed = _speed;
                 }
             }
 

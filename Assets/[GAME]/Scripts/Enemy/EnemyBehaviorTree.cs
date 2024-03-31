@@ -22,6 +22,8 @@ namespace _GAME_.Scripts.Enemy
         public static float fovRange = 2.5f;
         public static float damageRange = 1f;
 
+        public bool isGettingHit;
+
         #endregion
 
         #region Private Variables
@@ -39,6 +41,7 @@ namespace _GAME_.Scripts.Enemy
             _enemyAnimateController = transform.GetChild(0).GetChild(0).GetComponent<EnemyAnimateController>();
             _enemyHealthController = GetComponent<EnemyHealthController>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _enemyAnimateController.SetBehaviourTree(this);
         }
 
         #endregion
@@ -49,22 +52,25 @@ namespace _GAME_.Scripts.Enemy
         {
             Node root = new Selector(new List<Node>
             {
+                new DieNode(_enemyHealthController, _navMeshAgent),
                 new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent),
+                new ReceivingDamageNode(this, _navMeshAgent),
                 new Sequence
                 (
                     new List<Node>
                     {
-                        new CheckPlayerInDamageRangeNode(transform, _enemyAnimateController, _navMeshAgent),
-                        new GiveDamageNode()
+                        new CheckPlayerInDamageRangeNode(transform, _enemyAnimateController, _navMeshAgent,
+                            _enemyHealthController),
+                        new GiveDamageNode(_enemyHealthController)
                     }),
                 new Sequence
                 (
                     new List<Node>
                     {
-                        new CheckPlayerInFOVRangeNode(transform, layerMask),
-                        new GoToTargetNode(transform,_enemyAnimateController, _navMeshAgent)
+                        new CheckPlayerInFOVRangeNode(transform, layerMask, _enemyHealthController),
+                        new GoToTargetNode(transform, _enemyAnimateController, _navMeshAgent, _enemyHealthController)
                     }),
-                new PatrolNode(transform, waypoints, _enemyAnimateController, _navMeshAgent)
+                new PatrolNode(transform, waypoints, _enemyAnimateController, _navMeshAgent, _enemyHealthController)
             });
 
             return root;

@@ -9,6 +9,8 @@ namespace _GAME_.Scripts.Enemy.Nodes
     {
         #region Private Variables
 
+        private EnemyHealthController _enemyHealthController;
+
         private Transform _transform;
         private LayerMask _layerMask;
 
@@ -16,10 +18,11 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         #region Constructor
 
-        public CheckPlayerInFOVRangeNode(Transform transform, LayerMask layerMask)
+        public CheckPlayerInFOVRangeNode(Transform transform, LayerMask layerMask, EnemyHealthController enemyHealthController)
         {
             _transform = transform;
             _layerMask = layerMask;
+            _enemyHealthController = enemyHealthController;
         }
 
         #endregion
@@ -33,6 +36,13 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 state = NodeState.FAILURE;
                 return state;
             }
+
+            if (_enemyHealthController.IsDead)
+            {
+                state = NodeState.FAILURE;
+                return state;
+            }
+            
             object t = GetData(DataContextKey.TARGET);
 
             if (t == null)

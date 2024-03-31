@@ -3,23 +3,21 @@ using UnityEngine.AI;
 
 namespace _GAME_.Scripts.Enemy.Nodes
 {
-    public class ReceiveDamageNode : Node
+    public class DieNode : Node
     {
         #region Private Variables
 
-        private EnemyAnimateController _enemyAnimateController;
         private EnemyHealthController _enemyHealthController;
         private NavMeshAgent _navMeshAgent;
+
         #endregion
 
         #region Constructor
 
-        public ReceiveDamageNode(EnemyAnimateController enemyAnimateController,
-            EnemyHealthController enemyHealthController, NavMeshAgent navMeshAgent)
+        public DieNode(EnemyHealthController enemyHealthController, NavMeshAgent navMeshAgent)
         {
-            _enemyAnimateController = enemyAnimateController;
-            _navMeshAgent = navMeshAgent;
             _enemyHealthController = enemyHealthController;
+            _navMeshAgent = navMeshAgent;
         }
 
         #endregion
@@ -28,18 +26,15 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         public override NodeState Evaluate()
         {
-            if (_enemyHealthController.IsDamaged)
+            if (_enemyHealthController.IsDead)
             {
                 _navMeshAgent.speed = 0;
-                _enemyAnimateController.GetHit();
-                _enemyHealthController.IsDamaged = false;
-                state = NodeState.SUCCESS;
+                state = NodeState.RUNNING;
             }
             else
             {
                 state = NodeState.FAILURE;
             }
-
             return state;
         }
 

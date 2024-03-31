@@ -26,6 +26,7 @@ namespace _GAME_.Scripts.Enemy
         #region Properties
 
         public bool IsDamaged { get; set; }
+        public bool IsDead { get; set; }
 
         #endregion
 
@@ -67,6 +68,7 @@ namespace _GAME_.Scripts.Enemy
         {
             _collider.enabled = false;
             _enemyAnimateController.Die();
+            IsDead = true;
         }
 
         #endregion

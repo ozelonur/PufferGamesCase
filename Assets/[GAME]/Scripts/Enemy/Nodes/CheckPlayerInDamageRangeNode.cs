@@ -12,6 +12,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         private Transform _transform;
         private EnemyAnimateController _enemyAnimateController;
+        private EnemyHealthController _enemyHealthController;
         private NavMeshAgent _navMeshAgent;
 
         #endregion
@@ -19,10 +20,11 @@ namespace _GAME_.Scripts.Enemy.Nodes
         #region Constructor
 
         public CheckPlayerInDamageRangeNode(Transform transform, EnemyAnimateController enemyAnimateController,
-            NavMeshAgent navMeshAgent)
+            NavMeshAgent navMeshAgent, EnemyHealthController enemyHealthController)
         {
             _transform = transform;
             _enemyAnimateController = enemyAnimateController;
+            _enemyHealthController = enemyHealthController;
             _navMeshAgent = navMeshAgent;
         }
 
@@ -37,6 +39,13 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 state = NodeState.FAILURE;
                 return state;
             }
+
+            if (_enemyHealthController.IsDead)
+            {
+                state = NodeState.FAILURE;
+                return state;
+            }
+            
             object t = GetData(DataContextKey.TARGET);
 
             if (t == null)

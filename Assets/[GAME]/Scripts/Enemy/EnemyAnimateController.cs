@@ -1,4 +1,5 @@
 using _GAME_.Scripts.GlobalVariables;
+using JetBrains.Annotations;
 using OrangeBear.EventSystem;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace _GAME_.Scripts.Enemy
         #region Private Variables
 
         private Animator _animator;
+        private EnemyBehaviorTree _enemyBehaviorTree;
         private static readonly int WalkKey = Animator.StringToHash("Walk");
         private static readonly int DieKey = Animator.StringToHash("Die");
 
@@ -44,6 +46,27 @@ namespace _GAME_.Scripts.Enemy
         public void Die()
         {
             _animator.SetTrigger(DieKey);
+        }
+
+        public void SetBehaviourTree(EnemyBehaviorTree enemy)
+        {
+            _enemyBehaviorTree = enemy;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        [UsedImplicitly]
+        private void GetHitStarted()
+        {
+            _enemyBehaviorTree.isGettingHit = true;
+        }
+
+        [UsedImplicitly]
+        private void GetHitStopped()
+        {
+            _enemyBehaviorTree.isGettingHit = false;
         }
 
         #endregion

@@ -21,7 +21,6 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnEnter()
         {
-            Debug.Log("Move State!");
         }
 
         public override void OnUpdate(float deltaTime)

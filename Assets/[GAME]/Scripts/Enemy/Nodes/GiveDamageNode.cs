@@ -12,9 +12,19 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         private Transform _lastTarget;
         private PlayerHealthController _playerHealthController;
+        private EnemyHealthController _enemyHealthController;
 
         private float _attackTime = 1;
         private float _attackCounter;
+
+        #endregion
+
+        #region Constructor
+
+        public GiveDamageNode(EnemyHealthController enemyHealthController)
+        {
+            _enemyHealthController = enemyHealthController;
+        }
 
         #endregion
 
@@ -27,6 +37,13 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 state = NodeState.FAILURE;
                 return state;
             }
+
+            if (_enemyHealthController.IsDead)
+            {
+                state = NodeState.FAILURE;
+                return state;
+            }
+
             Transform target = (Transform)GetData(DataContextKey.TARGET);
 
             if (target != _lastTarget)

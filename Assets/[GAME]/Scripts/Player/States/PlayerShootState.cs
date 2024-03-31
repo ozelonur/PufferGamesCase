@@ -29,7 +29,6 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnEnter()
         {
-            Debug.Log("Shoot State!");
         }
 
         public override void OnUpdate(float deltaTime)
@@ -39,7 +38,6 @@ namespace _GAME_.Scripts.Player.States
 
             if (RotateToTheTargetAndGetReachStatus())
             {
-                // playerAnimateController.IdlingShoot(input == Vector3.zero);
                 playerAnimateController.SetLayerWeight(1, 1);
                 playerAnimateController.Shoot(true);
             }
@@ -47,7 +45,6 @@ namespace _GAME_.Scripts.Player.States
             {
                 playerAnimateController.SetLayerWeight(1, 0);
                 playerAnimateController.Shoot(false);
-                // playerAnimateController.IdlingShoot(false);
             }
 
         }
