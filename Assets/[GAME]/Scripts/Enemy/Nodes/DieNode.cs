@@ -8,15 +8,17 @@ namespace _GAME_.Scripts.Enemy.Nodes
         #region Private Variables
 
         private EnemyHealthController _enemyHealthController;
+        private EnemyAnimateController _enemyAnimateController;
         private NavMeshAgent _navMeshAgent;
 
         #endregion
 
         #region Constructor
 
-        public DieNode(EnemyHealthController enemyHealthController, NavMeshAgent navMeshAgent)
+        public DieNode(EnemyHealthController enemyHealthController, NavMeshAgent navMeshAgent, EnemyAnimateController enemyAnimateController)
         {
             _enemyHealthController = enemyHealthController;
+            _enemyAnimateController = enemyAnimateController;
             _navMeshAgent = navMeshAgent;
         }
 
@@ -29,6 +31,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
             if (_enemyHealthController.IsDead)
             {
                 _navMeshAgent.speed = 0;
+                _enemyAnimateController.Die();
                 state = NodeState.RUNNING;
             }
             else

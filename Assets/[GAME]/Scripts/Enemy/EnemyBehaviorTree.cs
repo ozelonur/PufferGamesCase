@@ -52,7 +52,7 @@ namespace _GAME_.Scripts.Enemy
         {
             Node root = new Selector(new List<Node>
             {
-                new DieNode(_enemyHealthController, _navMeshAgent),
+                new DieNode(_enemyHealthController, _navMeshAgent, _enemyAnimateController),
                 new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent),
                 new ReceivingDamageNode(this, _navMeshAgent),
                 new Sequence

@@ -18,7 +18,6 @@ namespace _GAME_.Scripts.Enemy
         #region Private Variables
 
         private int _currentHealth;
-        private EnemyAnimateController _enemyAnimateController;
         private Collider _collider;
 
         #endregion
@@ -35,7 +34,6 @@ namespace _GAME_.Scripts.Enemy
         private void Awake()
         {
             _collider = GetComponent<Collider>();
-            _enemyAnimateController = transform.GetChild(0).GetChild(0).GetComponent<EnemyAnimateController>();
             _currentHealth = maxHealth;
             IsDamaged = false;
         }
@@ -67,7 +65,6 @@ namespace _GAME_.Scripts.Enemy
         private void Die()
         {
             _collider.enabled = false;
-            _enemyAnimateController.Die();
             IsDead = true;
         }
 
