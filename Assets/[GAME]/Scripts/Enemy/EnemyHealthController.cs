@@ -33,7 +33,7 @@ namespace _GAME_.Scripts.Enemy
 
         private void Awake()
         {
-            _collider = GetComponent<Collider>();
+            _collider = GetComponent<Collider>();   
             _currentHealth = maxHealth;
             IsDamaged = false;
         }
