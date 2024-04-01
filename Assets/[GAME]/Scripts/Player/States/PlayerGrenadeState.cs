@@ -26,6 +26,8 @@ namespace _GAME_.Scripts.Player.States
         private const float _forceMax = 10f;
         private const float _tillingMax = 51f;
 
+        private bool _isGrenadeThrew;
+
         #endregion
 
         #region Constructor
@@ -51,29 +53,34 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnUpdate(float deltaTime)
         {
-            input = playerInputController.moveVector.ToVector3XZ();
-            Look(deltaTime);
-
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _groundLayer))
+            if (!Input.GetMouseButtonDown(0) && !_isGrenadeThrew)
             {
-                float distance = Vector3.Distance(moveTransform.position, hit.point);
+                input = playerInputController.moveVector.ToVector3XZ();
+                Look(deltaTime);
 
-                distance = Mathf.Clamp(distance, _minDistance, _maxDistance);
+                Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                float t = (distance - _minDistance) / (_maxDistance - _minDistance);
-                _frameCount = Mathf.RoundToInt(Mathf.Lerp(_frameCountMin, _frameCountMax, t));
-                _force = Mathf.Lerp(_forceMin, _forceMax, t);
-                _tilling = Mathf.Lerp(_tillingMin, _tillingMax, t);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _groundLayer))
+                {
+                    float distance = Vector3.Distance(moveTransform.position, hit.point);
+
+                    distance = Mathf.Clamp(distance, _minDistance, _maxDistance);
+
+                    float t = (distance - _minDistance) / (_maxDistance - _minDistance);
+                    _frameCount = Mathf.RoundToInt(Mathf.Lerp(_frameCountMin, _frameCountMax, t));
+                    _force = Mathf.Lerp(_forceMin, _forceMax, t);
+                    _tilling = Mathf.Lerp(_tillingMin, _tillingMax, t);
+
+                    _projection.SimulateStatus(true, _frameCount, _force, _tilling);
+                }
                 
-                _projection.SimulateStatus(true, _frameCount, _force, _tilling);
+                return;
             }
 
-
-            if (Input.GetMouseButtonDown(0))
-            {
-            }
+            _isGrenadeThrew = true;
+            playerAnimateController.ThrowGrenade();
+            playerAnimateController.SetLayerWeight(1,1);
+            
         }
 
         public override void OnFixedUpdate(float fixedDeltaTime)

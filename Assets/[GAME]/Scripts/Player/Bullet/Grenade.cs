@@ -1,3 +1,4 @@
+using DG.Tweening;
 using OrangeBear.EventSystem;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ namespace _GAME_.Scripts.Player.Bullet
         #region Private Variables
 
         private Rigidbody _rigidBody;
-        private bool _isGhost;
 
         #endregion
 
@@ -23,10 +23,23 @@ namespace _GAME_.Scripts.Player.Bullet
         
         #region Public Methods
 
-        public void Init(Vector3 velocity, bool isGhost)
+        public void Init(Vector3 velocity)
         {
-            _isGhost = isGhost;
             _rigidBody.AddForce(velocity, ForceMode.Impulse);
+        }
+
+        public void Go(Vector3[] path, float glidingDuration)
+        {
+            transform.DOPath(path, glidingDuration, PathType.CatmullRom).SetOptions(false).SetEase(Ease.Linear)
+                .SetLink(gameObject).OnComplete(() =>
+                {
+                    _rigidBody.isKinematic = true;
+                });
+        }
+
+        public void DisablePhysics()
+        {
+            _rigidBody.isKinematic = true;
         }
 
         #endregion

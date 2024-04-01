@@ -17,5 +17,8 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string WeaponPassTheLeftHand = nameof(WeaponPassTheLeftHand);
         public const string WeaponPassTheRightHand = nameof(WeaponPassTheRightHand);
         public const string ThrowGrenade = nameof(ThrowGrenade);
+        public const string SpawnGrenade = nameof(SpawnGrenade);
+        public const string ThrowGrenadeToTarget = nameof(ThrowGrenadeToTarget);
+        public const string AbortThrowingGrenade = nameof(AbortThrowingGrenade);
     }
 }

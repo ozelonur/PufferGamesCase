@@ -73,6 +73,9 @@ namespace _GAME_.Scripts.Player
                 Register(CustomEvents.Reload, Reload);
                 Register(CustomEvents.Dash, Dash);
                 Register(CustomEvents.ThrowGrenade, ThrowGrenade);
+                Register(CustomEvents.SpawnGrenade, SpawnGrenade);
+                Register(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
+                Register(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
             }
 
             else
@@ -82,7 +85,25 @@ namespace _GAME_.Scripts.Player
                 Unregister(CustomEvents.Reload, Reload);
                 Unregister(CustomEvents.Dash, Dash);
                 Unregister(CustomEvents.ThrowGrenade, ThrowGrenade);
+                Unregister(CustomEvents.SpawnGrenade, SpawnGrenade);
+                Unregister(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
+                Unregister(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
             }
+        }
+
+        private void AbortThrowingGrenade(object[] arguments)
+        {
+            SwitchState(new PlayerMoveState(this));
+        }
+
+        private void ThrowGrenadeToTarget(object[] arguments)
+        {
+            projection.ThrowGrenadeToTarget();
+        }
+
+        private void SpawnGrenade(object[] arguments)
+        {
+            projection.SpawnGrenade();
         }
 
         private void ThrowGrenade(object[] arguments)

@@ -72,7 +72,7 @@ namespace _GAME_.Scripts.Player
 
         public void ThrowGrenade()
         {
-            _animator.SetTrigger(ThrowGrenadeKey);
+            _animator.SetBool(ThrowGrenadeKey, true);
         }
 
         public void Reload()
@@ -163,9 +163,23 @@ namespace _GAME_.Scripts.Player
         [UsedImplicitly]
         private void LeftToRight()
         {
+            _animator.SetBool(ThrowGrenadeKey, false);
+            Roar(CustomEvents.AbortThrowingGrenade);
             ik.enabled = true;
             Roar(CustomEvents.WeaponPassTheRightHand);
             SetLayerWeight(1,0);
+        }
+
+        [UsedImplicitly]
+        private void SpawnGrenade()
+        {
+            Roar(CustomEvents.SpawnGrenade);
+        }
+
+        [UsedImplicitly]
+        private void ThrowGrenadeToTarget()
+        {
+            Roar(CustomEvents.ThrowGrenadeToTarget);
         }
 
         #endregion
