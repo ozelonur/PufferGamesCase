@@ -30,6 +30,7 @@ namespace _GAME_.Scripts.Enemy
 
         private EnemyAnimateController _enemyAnimateController;
         private EnemyHealthController _enemyHealthController;
+        private EnemyDissolveController _enemyDissolveController;
         private NavMeshAgent _navMeshAgent;
 
         #endregion
@@ -40,6 +41,7 @@ namespace _GAME_.Scripts.Enemy
         {
             _enemyAnimateController = transform.GetChild(0).GetChild(0).GetComponent<EnemyAnimateController>();
             _enemyHealthController = GetComponent<EnemyHealthController>();
+            _enemyDissolveController = GetComponent<EnemyDissolveController>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _enemyAnimateController.SetBehaviourTree(this);
         }
@@ -52,7 +54,7 @@ namespace _GAME_.Scripts.Enemy
         {
             Node root = new Selector(new List<Node>
             {
-                new DieNode(_enemyHealthController, _navMeshAgent, _enemyAnimateController),
+                new DieNode(_enemyHealthController, _navMeshAgent, _enemyAnimateController, _enemyDissolveController),
                 new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent),
                 new ReceivingDamageNode(this, _navMeshAgent),
                 new Sequence

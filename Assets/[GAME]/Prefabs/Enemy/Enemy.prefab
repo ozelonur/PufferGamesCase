@@ -100,6 +100,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isGettingHit: 0
 --- !u!195 &4286559975776315285
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -185,6 +186,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 4885301371922852569, guid: fc830632428a14545b88faf4c601aacc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a95e73b1d42f1423588b87478e4b8010, type: 2}
+    - target: {fileID: 4885301371922852569, guid: fc830632428a14545b88faf4c601aacc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2088df423d354d0e8b0dbdeeb0978ce, type: 2}
+    - target: {fileID: 4885301371922852569, guid: fc830632428a14545b88faf4c601aacc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5148e4aa7e5a483c9a63e933653a442, type: 2}
     - target: {fileID: 5866666021909216657, guid: fc830632428a14545b88faf4c601aacc,
         type: 3}
       propertyPath: m_Controller
