@@ -1,6 +1,7 @@
 using _GAME_.Scripts.Core.StateMachine;
 using _GAME_.Scripts.GlobalVariables;
 using _GAME_.Scripts.Player.States;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Player
@@ -29,6 +30,7 @@ namespace _GAME_.Scripts.Player
 
         [HideInInspector] public PlayerInputController inputController;
         [HideInInspector] public PlayerAnimateController playerAnimateController;
+        [HideInInspector] public PlayerMeshTrailController playerMeshTrailController;
         [HideInInspector] public Transform playerMoveTransform;
         [HideInInspector] public Transform playerRotateTransform;
         [SerializeField] public Transform weaponTransform;
@@ -45,6 +47,7 @@ namespace _GAME_.Scripts.Player
             playerMoveTransform = transform;
             playerRotateTransform = playerMoveTransform.GetChild(0);
             inputController = GetComponent<PlayerInputController>();
+            playerMeshTrailController = GetComponent<PlayerMeshTrailController>();
             playerAnimateController =
                 playerMoveTransform.GetChild(0).GetChild(0).GetComponent<PlayerAnimateController>();
         }
@@ -79,7 +82,9 @@ namespace _GAME_.Scripts.Player
 
         private void Dash(object[] arguments)
         {
-            SwitchState(new PlayerDashState(this, dashSpeed, dashDistance));
+            playerAnimateController.Jump();
+            playerMeshTrailController.ActivateTrail();
+            DOVirtual.DelayedCall(.05f, () => { SwitchState(new PlayerDashState(this, dashSpeed, dashDistance)); });
         }
 
         private void Reload(object[] arguments)

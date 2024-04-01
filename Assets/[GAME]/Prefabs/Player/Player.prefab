@@ -172,10 +172,11 @@ GameObject:
   - component: {fileID: 3029552609654315899}
   - component: {fileID: 5719734536760581751}
   - component: {fileID: 5354093989196848236}
+  - component: {fileID: 7346127908552689827}
   - component: {fileID: 8874506574809869249}
   - component: {fileID: 5332969124978947257}
   - component: {fileID: 2689114739383401615}
-  - component: {fileID: 7346127908552689827}
+  - component: {fileID: 8288377923288546553}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -240,6 +241,7 @@ MonoBehaviour:
   magazineCapacity: 10
   inputController: {fileID: 0}
   playerAnimateController: {fileID: 0}
+  playerMeshTrailController: {fileID: 0}
   playerMoveTransform: {fileID: 0}
   playerRotateTransform: {fileID: 0}
   weaponTransform: {fileID: 5685406358457686929}
@@ -256,6 +258,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97557cfdfcb44887a691af571fa57ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7346127908552689827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198330578202117744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ab15db562f4774ba8c7627de82d28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: {fileID: 5959582932025443964}
 --- !u!54 &8874506574809869249
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -328,7 +343,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7346127908552689827
+--- !u!114 &8288377923288546553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,10 +352,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5198330578202117744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ab15db562f4774ba8c7627de82d28f, type: 3}
+  m_Script: {fileID: 11500000, guid: fb0e95fd6f02480e81f73633892fb458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: {fileID: 5959582932025443964}
+  activeTime: 0.35
+  meshRefreshRate: 0.05
+  meshDestroyDelay: 1
+  shaderVariableRate: 0.1
+  shaderVariableRefreshRate: 0.05
+  skinnedMeshRenderer: {fileID: 7749074255733379059}
+  transformToPosition: {fileID: 3466517227011009163}
+  material: {fileID: 2100000, guid: 5253a3103953e4ab2afee9911f012543, type: 2}
 --- !u!1 &5461841325842126372
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +808,12 @@ MonoBehaviour:
 --- !u!4 &5321011142223361646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2189267025489947836, guid: fc830632428a14545b88faf4c601aacc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2902057915737990442}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7749074255733379059 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4885301371922852569, guid: fc830632428a14545b88faf4c601aacc,
     type: 3}
   m_PrefabInstance: {fileID: 2902057915737990442}
   m_PrefabAsset: {fileID: 0}

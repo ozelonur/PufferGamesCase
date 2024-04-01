@@ -33,8 +33,6 @@ namespace _GAME_.Scripts.Player.States
             _direction = rotateTransform.forward;
             _isDashing = true;
             _startPosition = moveTransform.position;
-            
-            playerAnimateController.Jump();
         }
 
         public override void OnUpdate(float deltaTime)
