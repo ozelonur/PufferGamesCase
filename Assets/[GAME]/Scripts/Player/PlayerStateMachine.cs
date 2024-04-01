@@ -7,6 +7,15 @@ namespace _GAME_.Scripts.Player
 {
     public class PlayerStateMachine : StateMachineBase
     {
+        #region Serialized Fields
+
+        [Header("Configurations")] [SerializeField]
+        private float dashSpeed;
+
+        [SerializeField] private float dashDistance;
+
+        #endregion
+
         #region Public Variables
 
         public Rigidbody playerRigidBody;
@@ -56,6 +65,7 @@ namespace _GAME_.Scripts.Player
                 Register(CustomEvents.OnGameStart, OnGameStart);
                 Register(CustomEvents.Shot, Shot);
                 Register(CustomEvents.Reload, Reload);
+                Register(CustomEvents.Dash, Dash);
             }
 
             else
@@ -63,7 +73,13 @@ namespace _GAME_.Scripts.Player
                 Unregister(CustomEvents.OnGameStart, OnGameStart);
                 Unregister(CustomEvents.Shot, Shot);
                 Unregister(CustomEvents.Reload, Reload);
+                Unregister(CustomEvents.Dash, Dash);
             }
+        }
+
+        private void Dash(object[] arguments)
+        {
+            SwitchState(new PlayerDashState(this, dashSpeed, dashDistance));
         }
 
         private void Reload(object[] arguments)
@@ -75,7 +91,7 @@ namespace _GAME_.Scripts.Player
         {
             if (currentBulletCount <= 0)
             {
-                playerAnimateController.SetLayerWeight(1,1);
+                playerAnimateController.SetLayerWeight(1, 1);
                 playerAnimateController.Reload();
                 return;
             }

@@ -17,10 +17,11 @@ namespace _GAME_.Scripts.Player.States
         protected Transform weaponTransform;
         protected UnityEngine.Camera mainCamera;
         protected LayerMask targetLayerMask;
-        
-        
+
+
         protected float speed;
         protected float visionRadius;
+        protected bool look;
 
         protected Vector3 input;
 
@@ -78,6 +79,11 @@ namespace _GAME_.Scripts.Player.States
 
         protected void Look(float deltaTime)
         {
+            if (!look)
+            {
+                return;
+            }
+
             if (stateMachine.canLook)
             {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);

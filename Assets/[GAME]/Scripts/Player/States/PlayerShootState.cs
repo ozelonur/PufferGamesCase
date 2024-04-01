@@ -29,6 +29,8 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnEnter()
         {
+            look = false;
+            stateMachine.canLook = true;
         }
 
         public override void OnUpdate(float deltaTime)

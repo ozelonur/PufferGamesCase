@@ -13,5 +13,6 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string GenerateMagazine = nameof(GenerateMagazine);
         public const string DropMagazine = nameof(DropMagazine);
         public const string InsertMagazine = nameof(InsertMagazine);
+        public const string Dash = nameof(Dash);
     }
 }

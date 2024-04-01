@@ -1,4 +1,5 @@
 using _GAME_.Scripts.GlobalVariables;
+using _GAME_.Scripts.Managers;
 using OrangeBear.EventSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +28,7 @@ namespace _GAME_.Scripts.Player
 
             _playerInputActions.Player.Movement.performed += Move;
             _playerInputActions.Player.AttackRange.performed += RangeIndicator;
+            _playerInputActions.Player.Dash.performed += DashPerformed;
             _playerInputActions.Player.Movement.canceled += Move;
             _playerInputActions.Player.AttackRange.canceled += RangeIndicator;
         }
@@ -49,6 +51,11 @@ namespace _GAME_.Scripts.Player
 
         private void Move(InputAction.CallbackContext context)
         {
+            if (!GameManager.Instance.IsGameStarted || GameManager.Instance.IsGameFailed)
+            {
+                return;
+            }
+
             moveVector = context.phase switch
             {
                 InputActionPhase.Performed => context.ReadValue<Vector2>(),
@@ -59,6 +66,11 @@ namespace _GAME_.Scripts.Player
 
         private void RangeIndicator(InputAction.CallbackContext context)
         {
+            if (!GameManager.Instance.IsGameStarted || GameManager.Instance.IsGameFailed)
+            {
+                return;
+            }
+
             switch (context.phase)
             {
                 case InputActionPhase.Performed:
@@ -68,6 +80,15 @@ namespace _GAME_.Scripts.Player
                     Roar(CustomEvents.VisionRangeVisibility, false);
                     break;
             }
+        }
+
+        private void DashPerformed(InputAction.CallbackContext context)
+        {
+            if (!GameManager.Instance.IsGameStarted || GameManager.Instance.IsGameFailed)
+            {
+                return;
+            }
+            Roar(CustomEvents.Dash);
         }
 
         #endregion

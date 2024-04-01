@@ -2199,6 +2199,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5719734536760581751, guid: ddbe8ac66bfb841f5866c4723cad40d0,
         type: 3}
+      propertyPath: canLook
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719734536760581751, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719734536760581751, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: dashDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719734536760581751, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
       propertyPath: visionRadius
       value: 5
       objectReference: {fileID: 0}

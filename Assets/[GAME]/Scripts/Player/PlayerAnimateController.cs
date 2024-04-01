@@ -29,6 +29,7 @@ namespace _GAME_.Scripts.Player
         private static readonly int ShootKey = Animator.StringToHash("Shoot");
         private static readonly int IdlingShootKey = Animator.StringToHash("IdlingShoot");
         private static readonly int ReloadKey = Animator.StringToHash("Reload");
+        private static readonly int JumpKey = Animator.StringToHash("Jump");
 
         #endregion
 
@@ -73,6 +74,11 @@ namespace _GAME_.Scripts.Player
             Roar(CustomEvents.Reload);
             ik.enabled = false;
             _animator.SetTrigger(ReloadKey);
+        }
+
+        public void Jump()
+        {
+            _animator.SetTrigger(JumpKey);
         }
 
         public void SetLayerWeight(int index, float weight)
