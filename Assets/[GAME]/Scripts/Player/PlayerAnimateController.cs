@@ -30,6 +30,7 @@ namespace _GAME_.Scripts.Player
         private static readonly int IdlingShootKey = Animator.StringToHash("IdlingShoot");
         private static readonly int ReloadKey = Animator.StringToHash("Reload");
         private static readonly int JumpKey = Animator.StringToHash("Jump");
+        private static readonly int ThrowGrenadeKey = Animator.StringToHash("ThrowGrenade");
 
         #endregion
 
@@ -67,6 +68,11 @@ namespace _GAME_.Scripts.Player
         public void Die()
         {
             _animator.SetTrigger(DieKey);
+        }
+
+        public void ThrowGrenade()
+        {
+            _animator.SetTrigger(ThrowGrenadeKey);
         }
 
         public void Reload()
@@ -145,6 +151,21 @@ namespace _GAME_.Scripts.Player
         private void InsertMagazine()
         {
             Roar(CustomEvents.InsertMagazine);
+        }
+
+        [UsedImplicitly]
+        private void RightToLeft()
+        {
+            ik.enabled = false;
+            Roar(CustomEvents.WeaponPassTheLeftHand);
+        }
+
+        [UsedImplicitly]
+        private void LeftToRight()
+        {
+            ik.enabled = true;
+            Roar(CustomEvents.WeaponPassTheRightHand);
+            SetLayerWeight(1,0);
         }
 
         #endregion

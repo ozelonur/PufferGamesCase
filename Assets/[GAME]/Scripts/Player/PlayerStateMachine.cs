@@ -31,10 +31,12 @@ namespace _GAME_.Scripts.Player
         [HideInInspector] public PlayerInputController inputController;
         [HideInInspector] public PlayerAnimateController playerAnimateController;
         [HideInInspector] public PlayerMeshTrailController playerMeshTrailController;
+        [HideInInspector] public Projection projection;
         [HideInInspector] public Transform playerMoveTransform;
         [HideInInspector] public Transform playerRotateTransform;
         [SerializeField] public Transform weaponTransform;
         [SerializeField] public int currentBulletCount;
+        [SerializeField] private LayerMask groundLayer;
 
         #endregion
 
@@ -50,6 +52,7 @@ namespace _GAME_.Scripts.Player
             playerMeshTrailController = GetComponent<PlayerMeshTrailController>();
             playerAnimateController =
                 playerMoveTransform.GetChild(0).GetChild(0).GetComponent<PlayerAnimateController>();
+            projection = GetComponent<Projection>();
         }
 
         private void Start()
@@ -69,6 +72,7 @@ namespace _GAME_.Scripts.Player
                 Register(CustomEvents.Shot, Shot);
                 Register(CustomEvents.Reload, Reload);
                 Register(CustomEvents.Dash, Dash);
+                Register(CustomEvents.ThrowGrenade, ThrowGrenade);
             }
 
             else
@@ -77,7 +81,14 @@ namespace _GAME_.Scripts.Player
                 Unregister(CustomEvents.Shot, Shot);
                 Unregister(CustomEvents.Reload, Reload);
                 Unregister(CustomEvents.Dash, Dash);
+                Unregister(CustomEvents.ThrowGrenade, ThrowGrenade);
             }
+        }
+
+        private void ThrowGrenade(object[] arguments)
+        {
+            Debug.Log("Throwing Grenade!");
+            SwitchState(new PlayerGrenadeState(this, groundLayer));
         }
 
         private void Dash(object[] arguments)

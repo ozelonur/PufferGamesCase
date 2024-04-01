@@ -14,9 +14,28 @@ namespace _GAME_.Scripts.Player
 
         [SerializeField] private Magazine magazinePrefab;
         [SerializeField] private Transform magazineParent;
+        [SerializeField] private Transform leftHandParent;
+        [SerializeField] private Transform rightHandParent;
 
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private GameObject magazineOnWeapon;
+
+        #endregion
+
+        #region Private Variables
+
+        private Vector3 _startPosition;
+        private Vector3 _startEulerAngles;
+
+        #endregion
+
+        #region MonoBehaviour Methods
+
+        private void Awake()
+        {
+            _startPosition = transform.localPosition;
+            _startEulerAngles = transform.localEulerAngles;
+        }
 
         #endregion
 
@@ -29,6 +48,8 @@ namespace _GAME_.Scripts.Player
                 Register(CustomEvents.Shot, Shot);
                 Register(CustomEvents.GenerateMagazine, GenerateMagazine);
                 Register(CustomEvents.InsertMagazine, InsertMagazine);
+                Register(CustomEvents.WeaponPassTheLeftHand, PassLeftHand);
+                Register(CustomEvents.WeaponPassTheRightHand, PassRightHand);
             }
 
             else
@@ -36,7 +57,21 @@ namespace _GAME_.Scripts.Player
                 Unregister(CustomEvents.Shot, Shot);
                 Unregister(CustomEvents.GenerateMagazine, GenerateMagazine);
                 Unregister(CustomEvents.InsertMagazine, InsertMagazine);
+                Unregister(CustomEvents.WeaponPassTheLeftHand, PassLeftHand);
+                Unregister(CustomEvents.WeaponPassTheRightHand, PassRightHand);
             }
+        }
+
+        private void PassRightHand(object[] arguments)
+        {
+            transform.parent = rightHandParent;
+            transform.localPosition = _startPosition;
+            transform.localEulerAngles = _startEulerAngles;
+        }
+
+        private void PassLeftHand(object[] arguments)
+        {
+            transform.parent = leftHandParent;
         }
 
         private void InsertMagazine(object[] arguments)

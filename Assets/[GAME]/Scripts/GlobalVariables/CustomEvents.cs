@@ -14,5 +14,8 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string DropMagazine = nameof(DropMagazine);
         public const string InsertMagazine = nameof(InsertMagazine);
         public const string Dash = nameof(Dash);
+        public const string WeaponPassTheLeftHand = nameof(WeaponPassTheLeftHand);
+        public const string WeaponPassTheRightHand = nameof(WeaponPassTheRightHand);
+        public const string ThrowGrenade = nameof(ThrowGrenade);
     }
 }
