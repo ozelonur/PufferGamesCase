@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/InputSystem/PlayerInputActions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/GlobalVariables/CustomEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/GlobalVariables/CustomEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerAnimateController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerInputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerInputController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerStateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerBaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerBaseState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerMoveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerMoveState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerShootState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/States/PlayerShootState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/Bullet/Magazine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/Bullet/Magazine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

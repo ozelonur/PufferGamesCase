@@ -54,7 +54,7 @@ namespace _GAME_.Scripts.Player.Bullet
             else
             {
                 Unregister(CustomEvents.DropMagazine, DropMagazine);
-                Register(CustomEvents.InsertMagazine, InsertMagazine);
+                Unregister(CustomEvents.InsertMagazine, InsertMagazine);
             }
         }
 
