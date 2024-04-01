@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeTime: 0.35
-  meshRefreshRate: 0.05
+  meshRefreshRate: 0.025
   meshDestroyDelay: 1
   shaderVariableRate: 0.1
   shaderVariableRefreshRate: 0.05
