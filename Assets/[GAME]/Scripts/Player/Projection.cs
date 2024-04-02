@@ -113,6 +113,16 @@ namespace _GAME_.Scripts.Player
             FollowPath();
         }
 
+        public void DisableLineAndIndicator()
+        {
+            if (_bombRangeIndicator != null)
+            {
+                Destroy(_bombRangeIndicator);
+            }
+
+            line.enabled = false;
+        }
+
         #endregion
         
         

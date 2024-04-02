@@ -77,7 +77,11 @@ namespace _GAME_.Scripts.Player.States
                 return;
             }
 
+            
+            look = true;
+            stateMachine.canLook = true;
             _isGrenadeThrew = true;
+            _projection.DisableLineAndIndicator();
             playerAnimateController.ThrowGrenade();
             playerAnimateController.SetLayerWeight(1,1);
             

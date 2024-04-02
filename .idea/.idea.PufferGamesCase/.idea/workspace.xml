@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Grenade.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Grenade.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Animators/Player/PlayerAnimatorController.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Player/Grenade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Player/Grenade.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyHealthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyHealthController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/Bullet/Grenade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/Bullet/Grenade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Player/PlayerStateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "OOC-39-Player-Skills-Grenade-Explosion-VFX",
+    "git-widget-placeholder": "OOC-37-Player-Skills-Grenade-Throw",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -103,7 +105,7 @@
       <workItem from="1711806423669" duration="26768000" />
       <workItem from="1711893368686" duration="10121000" />
       <workItem from="1711926106581" duration="1929000" />
-      <workItem from="1711981320805" duration="14307000" />
+      <workItem from="1711981320805" duration="15640000" />
     </task>
     <servers />
   </component>

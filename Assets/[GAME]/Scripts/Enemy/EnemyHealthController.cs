@@ -17,7 +17,7 @@ namespace _GAME_.Scripts.Enemy
 
         #region Private Variables
 
-        private int _currentHealth;
+        private float _currentHealth;
         private Collider _collider;
 
         #endregion
@@ -42,7 +42,7 @@ namespace _GAME_.Scripts.Enemy
 
         #region Public Methods
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             _currentHealth -= damage;
             IsDamaged = true;

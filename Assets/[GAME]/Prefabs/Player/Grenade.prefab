@@ -50,6 +50,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explodeParticle: {fileID: 7692170572433507591}
   model: {fileID: 3939698608948368922}
+  impactRadius: 2
+  grenadeBaseDamage: 50
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &560553985003419137
 Rigidbody:
   m_ObjectHideFlags: 0

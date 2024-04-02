@@ -108,7 +108,6 @@ namespace _GAME_.Scripts.Player
 
         private void ThrowGrenade(object[] arguments)
         {
-            Debug.Log("Throwing Grenade!");
             SwitchState(new PlayerGrenadeState(this, groundLayer));
         }
 
