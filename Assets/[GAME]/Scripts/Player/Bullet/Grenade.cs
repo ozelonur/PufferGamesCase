@@ -6,6 +6,15 @@ namespace _GAME_.Scripts.Player.Bullet
 {
     public class Grenade : Bear
     {
+        #region Serialized Fields
+
+        [Header("Components")] [SerializeField]
+        private ParticleSystem explodeParticle;
+
+        [SerializeField] private GameObject model;
+
+        #endregion
+
         #region Private Variables
 
         private Rigidbody _rigidBody;
@@ -20,7 +29,7 @@ namespace _GAME_.Scripts.Player.Bullet
         }
 
         #endregion
-        
+
         #region Public Methods
 
         public void Init(Vector3 velocity)
@@ -33,7 +42,10 @@ namespace _GAME_.Scripts.Player.Bullet
             transform.DOPath(path, glidingDuration, PathType.CatmullRom).SetOptions(false).SetEase(Ease.Linear)
                 .SetLink(gameObject).OnComplete(() =>
                 {
+                    model.SetActive(false);
                     _rigidBody.isKinematic = true;
+                    explodeParticle.Play();
+                    Destroy(gameObject, 2);
                 });
         }
 
