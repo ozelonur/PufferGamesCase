@@ -1819,11 +1819,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5198330578202117744, guid: ddbe8ac66bfb841f5866c4723cad40d0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6136291146282748616, guid: ddbe8ac66bfb841f5866c4723cad40d0,
         type: 3}
       propertyPath: obstacleParent
