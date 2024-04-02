@@ -735,6 +735,8 @@ MonoBehaviour:
   virtualCamera: {fileID: 766846576}
   shakeIntensity: 0.35
   shakeTime: 0.1
+  shotGunShakeIntensity: 2
+  shotGunShakeTime: 0.2
 --- !u!1 &766846574
 GameObject:
   m_ObjectHideFlags: 0

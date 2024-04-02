@@ -31,6 +31,7 @@ namespace _GAME_.Scripts.Player
         private static readonly int ReloadKey = Animator.StringToHash("Reload");
         private static readonly int JumpKey = Animator.StringToHash("Jump");
         private static readonly int ThrowGrenadeKey = Animator.StringToHash("ThrowGrenade");
+        private static readonly int ShootGunShot = Animator.StringToHash("ShootShotGun");
 
         #endregion
 
@@ -73,6 +74,11 @@ namespace _GAME_.Scripts.Player
         public void ThrowGrenade()
         {
             _animator.SetBool(ThrowGrenadeKey, true);
+        }
+
+        public void PlayFireShotGun()
+        {
+            _animator.SetBool(ShootGunShot, true);
         }
 
         public void Reload()
@@ -180,6 +186,20 @@ namespace _GAME_.Scripts.Player
         private void ThrowGrenadeToTarget()
         {
             Roar(CustomEvents.ThrowGrenadeToTarget);
+        }
+
+        [UsedImplicitly]
+        private void FireShotGun()
+        {
+            Roar(CustomEvents.FireShotGun);
+        }
+
+        [UsedImplicitly]
+        private void DisableShotGun()
+        {
+            _animator.SetBool(ShootGunShot, false);
+            _animator.SetLayerWeight(1,0);
+            Roar(CustomEvents.DisableShotGun);
         }
 
         #endregion

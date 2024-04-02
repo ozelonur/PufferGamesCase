@@ -19,6 +19,9 @@ namespace _GAME_.Scripts.Camera
 
         [SerializeField] private float shakeTime;
 
+        [SerializeField] private float shotGunShakeIntensity;
+        [SerializeField] private float shotGunShakeTime;
+
         #endregion
 
         #region Private Variables
@@ -53,12 +56,23 @@ namespace _GAME_.Scripts.Camera
             {
                 Register(CustomEvents.Shot, ShakeCamera);
                 Register(CustomEvents.ShakeOnGrenadeExplode, ShakeOnGrenadeExplode);
+                Register(CustomEvents.ShakeCameraToShotGun, ShakeCameraToShotGun);
             }
 
             else
             {
                 Unregister(CustomEvents.Shot, ShakeCamera);
                 Unregister(CustomEvents.ShakeOnGrenadeExplode, ShakeOnGrenadeExplode);
+                Unregister(CustomEvents.ShakeCameraToShotGun, ShakeCameraToShotGun);
+            }
+        }
+
+        private void ShakeCameraToShotGun(object[] arguments)
+        {
+            if (_timer <= 0)
+            {
+                _timer = shotGunShakeTime;
+                StartCoroutine(ShakeRoutine(shotGunShakeIntensity, shotGunShakeTime));
             }
         }
 
@@ -71,7 +85,6 @@ namespace _GAME_.Scripts.Camera
             
             float normalizedDistance = Mathf.Clamp01(1 - distanceToPlayer / 20f);
             float dynamicShakeIntensity = Mathf.Lerp(1f, 5f, normalizedDistance);
-            Debug.Log(dynamicShakeIntensity);
 
             float dynamicShakeTime = Mathf.Lerp(.2f, .5f, normalizedDistance);
 

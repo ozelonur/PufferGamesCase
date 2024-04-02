@@ -6,7 +6,6 @@ namespace _GAME_.Scripts.Player.States
 {
     public class PlayerShotgunState : PlayerBaseState
     {
-
         #region Constructor
 
         public PlayerShotgunState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -30,9 +29,12 @@ namespace _GAME_.Scripts.Player.States
             {
                 input = playerInputController.moveVector.ToVector3XZ();
                 Look(deltaTime);
-
-
+                return;
             }
+            
+            stateMachine.DisableShotGunRange();
+            playerAnimateController.PlayFireShotGun();
+            playerAnimateController.SetLayerWeight(1,1);
         }
 
         public override void OnFixedUpdate(float fixedDeltaTime)

@@ -33,13 +33,20 @@ namespace _GAME_.Scripts.Player
             {
                 Register(CustomEvents.VisionRangeVisibility, VisionRangeStatus);
                 Register(CustomEvents.EnableShotgun, EnableShotGunRange);
+                Register(CustomEvents.DisableShotGunRange, DisableShotgunRange);
             }
 
             else
             {
                 Unregister(CustomEvents.VisionRangeVisibility, VisionRangeStatus);
                 Unregister(CustomEvents.EnableShotgun, EnableShotGunRange);
+                Unregister(CustomEvents.DisableShotGunRange, DisableShotgunRange);
             }
+        }
+
+        private void DisableShotgunRange(object[] arguments)
+        {
+            shotGunRange.SetActive(false);
         }
 
         private void EnableShotGunRange(object[] arguments)

@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 8288377923288546553}
   - component: {fileID: 6136291146282748616}
   - component: {fileID: 900974779188674488}
+  - component: {fileID: 5265154652443625803}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -475,6 +476,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  weapon: {fileID: 5020755304907686187}
+  shotGun: {fileID: 5794181478832899851}
 --- !u!114 &5354093989196848236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 5959582932025443964}
-  shotGunRange: {fileID: 0}
+  shotGunRange: {fileID: 41825042526168124}
 --- !u!54 &8874506574809869249
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -718,6 +721,21 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &5265154652443625803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198330578202117744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f28dd19ab44df1b0f2329eafc1f7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponTarget: {fileID: 8330978837351797773}
+  shotGunTarget: {fileID: 5033542641058582683}
+  ik: {fileID: 1523133951520612562}
 --- !u!1 &5461841325842126372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,8 +1521,37 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 52524839246019374}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b36fb41929fc22429f0083d817b8040,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5700768264072340329}
   m_SourcePrefab: {fileID: 100100000, guid: 8b36fb41929fc22429f0083d817b8040, type: 3}
+--- !u!1 &5794181478832899851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b36fb41929fc22429f0083d817b8040,
+    type: 3}
+  m_PrefabInstance: {fileID: 6676718985133079130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5700768264072340329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794181478832899851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331bdf2ce55f46ae8a0ec4e31958904e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2065324735001675391, guid: 2a4c174a2316a450c99f5e44f618657f, type: 3}
+  bulletSpawnPoint: {fileID: 52524839246019374}
+  targetDirectionTransform: {fileID: 5100924380896597241}
+  pelletCount: 10
+  spreadAngle: 30
+  shotPower: 35
+  maxDistance: 6
 --- !u!4 &6567024476268780977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b36fb41929fc22429f0083d817b8040,

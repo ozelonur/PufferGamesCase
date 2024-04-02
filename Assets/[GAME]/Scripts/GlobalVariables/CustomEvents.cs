@@ -22,5 +22,9 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string AbortThrowingGrenade = nameof(AbortThrowingGrenade);
         public const string ShakeOnGrenadeExplode = nameof(ShakeOnGrenadeExplode);
         public const string EnableShotgun = nameof(EnableShotgun);
+        public const string FireShotGun = nameof(FireShotGun);
+        public const string DisableShotGun = nameof(DisableShotGun);
+        public const string DisableShotGunRange = nameof(DisableShotGunRange);
+        public const string ShakeCameraToShotGun = nameof(ShakeCameraToShotGun);
     }
 }

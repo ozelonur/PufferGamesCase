@@ -38,6 +38,8 @@ namespace _GAME_.Scripts.Player
         [SerializeField] public Transform weaponTransform;
         [SerializeField] public int currentBulletCount;
         [SerializeField] private LayerMask groundLayer;
+        [SerializeField] public GameObject weapon;
+        [SerializeField] public GameObject shotGun;
 
         #endregion
 
@@ -79,6 +81,7 @@ namespace _GAME_.Scripts.Player
                 Register(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
                 Register(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
                 Register(CustomEvents.EnableShotgun, EnableShotgun);
+                Register(CustomEvents.DisableShotGun, DisableShotGun);
             }
 
             else
@@ -92,11 +95,21 @@ namespace _GAME_.Scripts.Player
                 Unregister(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
                 Unregister(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
                 Unregister(CustomEvents.EnableShotgun, EnableShotgun);
+                Unregister(CustomEvents.DisableShotGun, DisableShotGun);
             }
+        }
+
+        private void DisableShotGun(object[] arguments)
+        {
+            weapon.SetActive(true);
+            shotGun.SetActive(false);
+            SwitchState(new PlayerMoveState(this));
         }
 
         private void EnableShotgun(object[] arguments)
         {
+            weapon.SetActive(false);
+            shotGun.SetActive(true);
             SwitchState(new PlayerShotgunState(this));
         }
 
@@ -147,6 +160,15 @@ namespace _GAME_.Scripts.Player
         private void OnGameStart(object[] arguments)
         {
             SwitchState(new PlayerMoveState(this));
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void DisableShotGunRange()
+        {
+            Roar(CustomEvents.DisableShotGunRange);
         }
 
         #endregion
