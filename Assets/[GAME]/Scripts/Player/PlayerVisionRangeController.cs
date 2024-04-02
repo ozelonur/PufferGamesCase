@@ -11,6 +11,8 @@ namespace _GAME_.Scripts.Player
         [Header("Components")] [SerializeField]
         private Renderer element;
 
+        [SerializeField] private GameObject shotGunRange; 
+
         #endregion
 
         #region MonoBehaviour Methods
@@ -18,6 +20,7 @@ namespace _GAME_.Scripts.Player
         private void Awake()
         {
             element.enabled = false;
+            shotGunRange.SetActive(false);
         }
 
         #endregion
@@ -29,12 +32,19 @@ namespace _GAME_.Scripts.Player
             if (status)
             {
                 Register(CustomEvents.VisionRangeVisibility, VisionRangeStatus);
+                Register(CustomEvents.EnableShotgun, EnableShotGunRange);
             }
 
             else
             {
                 Unregister(CustomEvents.VisionRangeVisibility, VisionRangeStatus);
+                Unregister(CustomEvents.EnableShotgun, EnableShotGunRange);
             }
+        }
+
+        private void EnableShotGunRange(object[] arguments)
+        {
+            shotGunRange.SetActive(true);
         }
 
         private void VisionRangeStatus(object[] arguments)

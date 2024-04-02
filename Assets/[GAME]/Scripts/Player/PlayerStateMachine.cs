@@ -78,6 +78,7 @@ namespace _GAME_.Scripts.Player
                 Register(CustomEvents.SpawnGrenade, SpawnGrenade);
                 Register(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
                 Register(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
+                Register(CustomEvents.EnableShotgun, EnableShotgun);
             }
 
             else
@@ -90,7 +91,13 @@ namespace _GAME_.Scripts.Player
                 Unregister(CustomEvents.SpawnGrenade, SpawnGrenade);
                 Unregister(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
                 Unregister(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
+                Unregister(CustomEvents.EnableShotgun, EnableShotgun);
             }
+        }
+
+        private void EnableShotgun(object[] arguments)
+        {
+            SwitchState(new PlayerShotgunState(this));
         }
 
         private void AbortThrowingGrenade(object[] arguments)
