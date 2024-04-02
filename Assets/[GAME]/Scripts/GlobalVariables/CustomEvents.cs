@@ -20,5 +20,6 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string SpawnGrenade = nameof(SpawnGrenade);
         public const string ThrowGrenadeToTarget = nameof(ThrowGrenadeToTarget);
         public const string AbortThrowingGrenade = nameof(AbortThrowingGrenade);
+        public const string ShakeOnGrenadeExplode = nameof(ShakeOnGrenadeExplode);
     }
 }

@@ -1,4 +1,5 @@
 using _GAME_.Scripts.Enemy;
+using _GAME_.Scripts.GlobalVariables;
 using DG.Tweening;
 using OrangeBear.EventSystem;
 using UnityEngine;
@@ -53,6 +54,7 @@ namespace _GAME_.Scripts.Player.Bullet
                     model.SetActive(false);
                     _rigidBody.isKinematic = true;
                     explodeParticle.Play();
+                    Roar(CustomEvents.ShakeOnGrenadeExplode, transform.position);
                     TryGiveDamage();
                     Destroy(gameObject, 2);
                 });

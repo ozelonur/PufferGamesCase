@@ -1,5 +1,6 @@
 using _GAME_.Scripts.Core.StateMachine;
 using _GAME_.Scripts.GlobalVariables;
+using _GAME_.Scripts.Managers;
 using _GAME_.Scripts.Player.States;
 using DG.Tweening;
 using UnityEngine;
@@ -57,6 +58,7 @@ namespace _GAME_.Scripts.Player
 
         private void Start()
         {
+            PlayerManager.Instance.SetPlayer(this);
             Roar(CustomEvents.SetPlayerTransform, playerMoveTransform);
         }
 

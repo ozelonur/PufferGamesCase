@@ -1,5 +1,6 @@
 using System.Collections;
 using _GAME_.Scripts.GlobalVariables;
+using _GAME_.Scripts.Managers;
 using Cinemachine;
 using OrangeBear.EventSystem;
 using UnityEngine;
@@ -51,11 +52,33 @@ namespace _GAME_.Scripts.Camera
             if (status)
             {
                 Register(CustomEvents.Shot, ShakeCamera);
+                Register(CustomEvents.ShakeOnGrenadeExplode, ShakeOnGrenadeExplode);
             }
 
             else
             {
                 Unregister(CustomEvents.Shot, ShakeCamera);
+                Unregister(CustomEvents.ShakeOnGrenadeExplode, ShakeOnGrenadeExplode);
+            }
+        }
+
+        private void ShakeOnGrenadeExplode(object[] arguments)
+        {
+            Vector3 grenadePos = (Vector3)arguments[0];
+            Vector3 playerPos = PlayerManager.Instance.GetPlayer().playerMoveTransform.position;
+            
+            float distanceToPlayer = Vector3.Distance(grenadePos, playerPos);
+            
+            float normalizedDistance = Mathf.Clamp01(1 - distanceToPlayer / 20f);
+            float dynamicShakeIntensity = Mathf.Lerp(1f, 5f, normalizedDistance);
+            Debug.Log(dynamicShakeIntensity);
+
+            float dynamicShakeTime = Mathf.Lerp(.2f, .5f, normalizedDistance);
+
+            if (_timer <= 0)
+            {
+                _timer = dynamicShakeTime;
+                StartCoroutine(ShakeRoutine(dynamicShakeIntensity, dynamicShakeTime));
             }
         }
 
@@ -74,6 +97,18 @@ namespace _GAME_.Scripts.Camera
             while (_timer > 0)
             {
                 _timer -= Time.deltaTime;
+                yield return null;
+            }
+            _perlin.m_AmplitudeGain = 0;
+        }
+        
+        private IEnumerator ShakeRoutine(float dynamicShakeIntensity, float dynamicShakeTime)
+        {
+            _perlin.m_AmplitudeGain = dynamicShakeIntensity;
+            float localTimer = dynamicShakeTime;
+            while (localTimer > 0)
+            {
+                localTimer -= Time.deltaTime;
                 yield return null;
             }
             _perlin.m_AmplitudeGain = 0;
