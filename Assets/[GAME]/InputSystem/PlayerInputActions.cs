@@ -80,6 +80,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Stun"",
+                    ""type"": ""Button"",
+                    ""id"": ""f89cd58c-30af-4c2d-8c84-91c1843ff0a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Shotgun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5e1d301-8dc7-43b2-812b-3e10e8d8083f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Stun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,6 +238,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_ThrowGrenade = m_Player.FindAction("ThrowGrenade", throwIfNotFound: true);
         m_Player_Shotgun = m_Player.FindAction("Shotgun", throwIfNotFound: true);
+        m_Player_Stun = m_Player.FindAction("Stun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -285,6 +306,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_ThrowGrenade;
     private readonly InputAction m_Player_Shotgun;
+    private readonly InputAction m_Player_Stun;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -295,6 +317,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @ThrowGrenade => m_Wrapper.m_Player_ThrowGrenade;
         public InputAction @Shotgun => m_Wrapper.m_Player_Shotgun;
+        public InputAction @Stun => m_Wrapper.m_Player_Stun;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +345,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shotgun.started += instance.OnShotgun;
             @Shotgun.performed += instance.OnShotgun;
             @Shotgun.canceled += instance.OnShotgun;
+            @Stun.started += instance.OnStun;
+            @Stun.performed += instance.OnStun;
+            @Stun.canceled += instance.OnStun;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -344,6 +370,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shotgun.started -= instance.OnShotgun;
             @Shotgun.performed -= instance.OnShotgun;
             @Shotgun.canceled -= instance.OnShotgun;
+            @Stun.started -= instance.OnStun;
+            @Stun.performed -= instance.OnStun;
+            @Stun.canceled -= instance.OnStun;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -378,5 +407,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnThrowGrenade(InputAction.CallbackContext context);
         void OnShotgun(InputAction.CallbackContext context);
+        void OnStun(InputAction.CallbackContext context);
     }
 }
