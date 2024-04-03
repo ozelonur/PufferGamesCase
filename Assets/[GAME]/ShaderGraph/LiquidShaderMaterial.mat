@@ -27,12 +27,13 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
+  - _SPECULAR_SETUP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3001
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses: []
@@ -63,23 +64,23 @@ Material:
     - _DstBlend: 10
     - _Metallic: 0.4
     - _NormalStrength: 0.12
-    - _QueueControl: 1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 1.4
     - _SrcBlend: 1
     - _Surface: 1
-    - _Transparency: 0
-    - _TransparencyMask: 0
-    - _VoronoiAngleOffset: 1
-    - _VoronoiPower: 2
-    - _VoronoiScale: 10
-    - _WorkflowMode: 1
+    - _Transparency: 3.1
+    - _TransparencyMask: 4.93
+    - _VoronoiAngleOffset: 1.33
+    - _VoronoiPower: 4.91
+    - _VoronoiScale: 10.37
+    - _WorkflowMode: 0
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 1
     m_Colors:
-    - _BaseColor: {r: 0.6603774, g: 0.49084157, b: 0.056132063, a: 1}
+    - _BaseColor: {r: 0.7830189, g: 0.5695402, b: 0.018467424, a: 1}
     - _NormalSpeed: {r: 0, g: 0.2, b: 0, a: 0}
     - _VoronoiColor: {r: 1.2167859, g: 1.0207723, b: 0.15496802, a: 1}
     - _VoronoiSpeed: {r: 0, g: 0.1, b: 0, a: 0}

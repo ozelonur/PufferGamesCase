@@ -9,17 +9,19 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         private EnemyAnimateController _enemyAnimateController;
         private EnemyHealthController _enemyHealthController;
+        private EnemyBehaviorTree _enemyBehaviorTree;
         private NavMeshAgent _navMeshAgent;
         #endregion
 
         #region Constructor
 
         public ReceiveDamageNode(EnemyAnimateController enemyAnimateController,
-            EnemyHealthController enemyHealthController, NavMeshAgent navMeshAgent)
+            EnemyHealthController enemyHealthController, NavMeshAgent navMeshAgent, EnemyBehaviorTree enemyBehaviorTree)
         {
             _enemyAnimateController = enemyAnimateController;
             _navMeshAgent = navMeshAgent;
             _enemyHealthController = enemyHealthController;
+            _enemyBehaviorTree = enemyBehaviorTree;
         }
 
         #endregion
@@ -31,7 +33,10 @@ namespace _GAME_.Scripts.Enemy.Nodes
             if (_enemyHealthController.IsDamaged)
             {
                 _navMeshAgent.speed = 0;
-                _enemyAnimateController.GetHit();
+                if (!_enemyBehaviorTree.isSlipping)
+                {
+                    _enemyAnimateController.GetHit();
+                }
                 _enemyHealthController.IsDamaged = false;
                 state = NodeState.SUCCESS;
             }

@@ -14,6 +14,7 @@ namespace _GAME_.Scripts.Player
 
         [SerializeField] private LineRenderer line;
         [SerializeField] private Grenade grenadePrefab;
+        [SerializeField] private OilBomb oilBombPrefab;
         [SerializeField] private Transform grenadeSpawn;
         [SerializeField] private GameObject bombDownPrefab;
         [SerializeField] private Transform realGrenadeSpawnTransform;
@@ -33,6 +34,7 @@ namespace _GAME_.Scripts.Player
         private float _tilling;
 
         private Grenade _spawnedGrenade;
+        private OilBomb _spawnedOilBomb;
 
         #endregion
 
@@ -101,6 +103,14 @@ namespace _GAME_.Scripts.Player
             _spawnedGrenade.transform.localEulerAngles = Vector3.zero;
         }
 
+        public void SpawnOilBomb()
+        {
+            _spawnedOilBomb = Instantiate(oilBombPrefab, realGrenadeSpawnTransform);
+            _spawnedOilBomb.DisablePhysics();
+            _spawnedOilBomb.transform.localPosition = Vector3.zero;
+            _spawnedOilBomb.transform.localEulerAngles = Vector3.zero;
+        }
+
         public void ThrowGrenadeToTarget()
         {
             if (_spawnedGrenade == null)
@@ -111,6 +121,18 @@ namespace _GAME_.Scripts.Player
             _spawnedGrenade.transform.parent = null;
             
             FollowPath();
+        }
+
+        public void ThrowOilBombToTarget()
+        {
+            if (_spawnedOilBomb == null)
+            {
+                return;
+            }
+
+            _spawnedOilBomb.transform.parent = null;
+            
+            FollowPathOilBomb();
         }
 
         public void DisableLineAndIndicator()
@@ -158,6 +180,24 @@ namespace _GAME_.Scripts.Player
             float duration = pathLength / glidingDuration;
 
             _spawnedGrenade.Go(path, duration);
+
+        }
+        
+        private void FollowPathOilBomb()
+        {
+            Vector3[] positions = new Vector3[line.positionCount];
+            line.GetPositions(positions);
+
+            line.enabled = false;
+            Destroy(_bombRangeIndicator);
+
+            int highestPointIndex = FindHighestPointIndex(positions);
+            Vector3[] path = ExtractPathFromHighestPoint(positions, highestPointIndex);
+
+            float pathLength = CalculatePathLength(path);
+            float duration = pathLength / glidingDuration;
+
+            _spawnedOilBomb.Go(path, duration);
 
         }
 

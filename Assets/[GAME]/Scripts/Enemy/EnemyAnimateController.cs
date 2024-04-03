@@ -13,6 +13,7 @@ namespace _GAME_.Scripts.Enemy
         private EnemyBehaviorTree _enemyBehaviorTree;
         private static readonly int WalkKey = Animator.StringToHash("Walk");
         private static readonly int DieKey = Animator.StringToHash("Die");
+        private static readonly int SlipKey = Animator.StringToHash("Slip");
 
         #endregion
 
@@ -43,6 +44,12 @@ namespace _GAME_.Scripts.Enemy
             _animator.SetTrigger(selectedAnimation.ToString());
         }
 
+        public void Slip()
+        {
+            _animator.SetBool(WalkKey,false);
+            _animator.SetTrigger(SlipKey);
+        }
+
         public void Die()
         {
             _animator.SetTrigger(DieKey);
@@ -67,6 +74,12 @@ namespace _GAME_.Scripts.Enemy
         private void GetHitStopped()
         {
             _enemyBehaviorTree.isGettingHit = false;
+        }
+
+        [UsedImplicitly]
+        private void EndSlip()
+        {
+            _enemyBehaviorTree.isSlipping = false;
         }
 
         #endregion

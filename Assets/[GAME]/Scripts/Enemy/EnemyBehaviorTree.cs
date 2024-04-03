@@ -23,6 +23,7 @@ namespace _GAME_.Scripts.Enemy
         public static float damageRange = 1f;
 
         public bool isGettingHit;
+        public bool isSlipping;
 
         #endregion
 
@@ -55,8 +56,9 @@ namespace _GAME_.Scripts.Enemy
             Node root = new Selector(new List<Node>
             {
                 new DieNode(_enemyHealthController, _navMeshAgent, _enemyAnimateController, _enemyDissolveController),
-                new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent),
+                new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent, this),
                 new ReceivingDamageNode(this, _navMeshAgent),
+                new SlipNode(this, _navMeshAgent),
                 new Sequence
                 (
                     new List<Node>
@@ -76,6 +78,16 @@ namespace _GAME_.Scripts.Enemy
             });
 
             return root;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void Slip()
+        {
+            isSlipping = true;
+            _enemyAnimateController.Slip();
         }
 
         #endregion

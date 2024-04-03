@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2853385491473322446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3, z: 2.51}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 6634171055204363777}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,8 +74,8 @@ VisualEffect:
   m_GameObject: {fileID: 6634171055204363777}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: ebd11a8eee6d84ad98cf34cfebbdaa65, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
@@ -83,17 +83,17 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 1000
+      - m_Value: 350
         m_Name: Rate
         m_Overridden: 1
-      - m_Value: 7
+      - m_Value: 1
         m_Name: OilDissolvePower
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 3, y: 3, z: 3}
+      - m_Value: {x: 23, y: 5, z: 23}
         m_Name: OilVelocity
         m_Overridden: 1
     m_Vector4f:

@@ -612,6 +612,8 @@ MonoBehaviour:
   line: {fileID: 900974779188674488}
   grenadePrefab: {fileID: 5817433260000644313, guid: 0b41ed549ebc8460f861a165204a3fd2,
     type: 3}
+  oilBombPrefab: {fileID: 7196781197432672278, guid: ee61a038fd7aa4126b3230540de1b402,
+    type: 3}
   grenadeSpawn: {fileID: 1611113940769878875}
   bombDownPrefab: {fileID: 5904247471937106944, guid: fb2341e3e2a354adc9eb05c98f51fcb0,
     type: 3}

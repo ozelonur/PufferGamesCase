@@ -32,6 +32,7 @@ namespace _GAME_.Scripts.Player
         private static readonly int JumpKey = Animator.StringToHash("Jump");
         private static readonly int ThrowGrenadeKey = Animator.StringToHash("ThrowGrenade");
         private static readonly int ShootGunShot = Animator.StringToHash("ShootShotGun");
+        private static readonly int Bomb = Animator.StringToHash("ThrowOilBomb");
 
         #endregion
 
@@ -74,6 +75,11 @@ namespace _GAME_.Scripts.Player
         public void ThrowGrenade()
         {
             _animator.SetBool(ThrowGrenadeKey, true);
+        }
+
+        public void ThrowOilBomb()
+        {
+            _animator.SetBool(Bomb, true);
         }
 
         public void PlayFireShotGun()
@@ -167,10 +173,19 @@ namespace _GAME_.Scripts.Player
         }
 
         [UsedImplicitly]
-        private void LeftToRight()
+        private void LeftToRight(BombType type)
         {
-            _animator.SetBool(ThrowGrenadeKey, false);
-            Roar(CustomEvents.AbortThrowingGrenade);
+            if (type == BombType.Grenade)
+            {
+                _animator.SetBool(ThrowGrenadeKey, false);
+                Roar(CustomEvents.AbortThrowingGrenade);
+            }
+            else if(type == BombType.OilBomb)
+            {
+                _animator.SetBool(Bomb, false);
+                Roar(CustomEvents.AbortThrowingOilBomb);
+            }
+            
             ik.enabled = true;
             Roar(CustomEvents.WeaponPassTheRightHand);
             SetLayerWeight(1,0);
@@ -183,9 +198,21 @@ namespace _GAME_.Scripts.Player
         }
 
         [UsedImplicitly]
+        private void SpawnOilBomb()
+        {
+            Roar(CustomEvents.SpawnOilBomb);
+        }
+
+        [UsedImplicitly]
         private void ThrowGrenadeToTarget()
         {
             Roar(CustomEvents.ThrowGrenadeToTarget);
+        }
+
+        [UsedImplicitly]
+        private void ThrowOilBombToTarget()
+        {
+            Roar(CustomEvents.ThrowOilBombToTarget);
         }
 
         [UsedImplicitly]

@@ -31,6 +31,7 @@ namespace _GAME_.Scripts.Player
             _playerInputActions.Player.Dash.performed += DashPerformed;
             _playerInputActions.Player.ThrowGrenade.performed += ThrowGrenadePerformed;
             _playerInputActions.Player.Shotgun.performed += ShotgunPerformed;
+            _playerInputActions.Player.Stun.performed += StunPerformed;
             _playerInputActions.Player.Movement.canceled += Move;
             _playerInputActions.Player.AttackRange.canceled += RangeIndicator;
         }
@@ -110,6 +111,16 @@ namespace _GAME_.Scripts.Player
             }
             
             Roar(CustomEvents.EnableShotgun);
+        }
+
+        private void StunPerformed(InputAction.CallbackContext context)
+        {
+            if (!GameManager.Instance.IsGameStarted || GameManager.Instance.IsGameFailed)
+            {
+                return;
+            }
+            
+            Roar(CustomEvents.ThrowOilBomb);
         }
 
         #endregion

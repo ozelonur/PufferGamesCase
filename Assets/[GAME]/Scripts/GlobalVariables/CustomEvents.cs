@@ -14,6 +14,7 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string DropMagazine = nameof(DropMagazine);
         public const string InsertMagazine = nameof(InsertMagazine);
         public const string Dash = nameof(Dash);
+        
         public const string WeaponPassTheLeftHand = nameof(WeaponPassTheLeftHand);
         public const string WeaponPassTheRightHand = nameof(WeaponPassTheRightHand);
         public const string ThrowGrenade = nameof(ThrowGrenade);
@@ -21,6 +22,12 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string ThrowGrenadeToTarget = nameof(ThrowGrenadeToTarget);
         public const string AbortThrowingGrenade = nameof(AbortThrowingGrenade);
         public const string ShakeOnGrenadeExplode = nameof(ShakeOnGrenadeExplode);
+
+        public const string ThrowOilBomb = nameof(ThrowOilBomb);
+        public const string SpawnOilBomb = nameof(SpawnOilBomb);
+        public const string ThrowOilBombToTarget = nameof(ThrowOilBombToTarget);
+        public const string AbortThrowingOilBomb = nameof(AbortThrowingOilBomb);
+        
         public const string EnableShotgun = nameof(EnableShotgun);
         public const string FireShotGun = nameof(FireShotGun);
         public const string DisableShotGun = nameof(DisableShotGun);

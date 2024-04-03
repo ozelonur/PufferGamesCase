@@ -76,10 +76,18 @@ namespace _GAME_.Scripts.Player
                 Register(CustomEvents.Shot, Shot);
                 Register(CustomEvents.Reload, Reload);
                 Register(CustomEvents.Dash, Dash);
+                
                 Register(CustomEvents.ThrowGrenade, ThrowGrenade);
                 Register(CustomEvents.SpawnGrenade, SpawnGrenade);
                 Register(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
                 Register(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
+                
+                Register(CustomEvents.ThrowOilBomb, ThrowOilBomb);
+                Register(CustomEvents.SpawnOilBomb, SpawnOilBomb);
+                Register(CustomEvents.ThrowOilBombToTarget, ThrowOilBombToTarget);
+                Register(CustomEvents.AbortThrowingOilBomb, AbortThrowingOilBomb);
+                
+                
                 Register(CustomEvents.EnableShotgun, EnableShotgun);
                 Register(CustomEvents.DisableShotGun, DisableShotGun);
             }
@@ -94,9 +102,35 @@ namespace _GAME_.Scripts.Player
                 Unregister(CustomEvents.SpawnGrenade, SpawnGrenade);
                 Unregister(CustomEvents.ThrowGrenadeToTarget, ThrowGrenadeToTarget);
                 Unregister(CustomEvents.AbortThrowingGrenade, AbortThrowingGrenade);
+                
+                Register(CustomEvents.ThrowOilBomb, ThrowOilBomb);
+                Register(CustomEvents.SpawnOilBomb, SpawnOilBomb);
+                Register(CustomEvents.ThrowOilBombToTarget, ThrowOilBombToTarget);
+                Register(CustomEvents.AbortThrowingOilBomb, AbortThrowingOilBomb);
+                
                 Unregister(CustomEvents.EnableShotgun, EnableShotgun);
                 Unregister(CustomEvents.DisableShotGun, DisableShotGun);
             }
+        }
+
+        private void AbortThrowingOilBomb(object[] arguments)
+        {
+            SwitchState(new PlayerMoveState(this));
+        }
+
+        private void ThrowOilBombToTarget(object[] arguments)
+        {
+            projection.ThrowOilBombToTarget();
+        }
+
+        private void SpawnOilBomb(object[] arguments)
+        {
+            projection.SpawnOilBomb();
+        }
+
+        private void ThrowOilBomb(object[] arguments)
+        {
+            SwitchState(new PlayerOilBombState(this, groundLayer));
         }
 
         private void DisableShotGun(object[] arguments)
