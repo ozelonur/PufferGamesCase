@@ -10,8 +10,8 @@ namespace _GAME_.Scripts.Player.States
         #region Private Variables
 
         private Transform _target;
-        private float _rotationSpeed = 5;
-        public float _rotationThreshold = 0.01f;
+        private float _rotationSpeed;
+        public float _rotationThreshold;
         private float _shortestDistance = float.MaxValue;
 
         #endregion
@@ -21,6 +21,8 @@ namespace _GAME_.Scripts.Player.States
         public PlayerShootState(PlayerStateMachine stateMachine, Transform target) : base(stateMachine)
         {
             _target = target;
+            _rotationSpeed = DataManager.Instance.GetPlayerBaseAttackData().rotationSpeed;
+            _rotationThreshold = DataManager.Instance.GetPlayerBaseAttackData().rotationThreshold;
         }
 
         #endregion

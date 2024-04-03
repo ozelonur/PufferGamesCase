@@ -1,4 +1,5 @@
 using _GAME_.Scripts.GlobalVariables;
+using _GAME_.Scripts.Managers;
 using OrangeBear.EventSystem;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace _GAME_.Scripts.Player
 
         private void Awake()
         {
-            _healthPoints = 50;
+            _healthPoints = DataManager.Instance.GetPlayerBaseAttackData().maxHealth;
             _collider = GetComponent<Collider>();
             _playerAnimateController = transform.GetChild(0).GetChild(0).GetComponent<PlayerAnimateController>();
         }
@@ -30,7 +31,7 @@ namespace _GAME_.Scripts.Player
 
         public bool TakeHit()
         {
-            _healthPoints -= 10;
+            _healthPoints -= DataManager.Instance.GetEnemyData().damagePower;
             bool isDead = _healthPoints <= 0;
 
             if (isDead)

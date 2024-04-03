@@ -9,25 +9,11 @@ namespace _GAME_.Scripts.Player
 {
     public class PlayerStateMachine : StateMachineBase
     {
-        #region Serialized Fields
-
-        [Header("Configurations")] [SerializeField]
-        private float dashSpeed;
-
-        [SerializeField] private float dashDistance;
-
-        #endregion
-
         #region Public Variables
 
         public Rigidbody playerRigidBody;
-        public float speed;
-        public float turnSpeed = 360;
-        public float mouseSensitivity = 50;
-        public float visionRadius = 5;
         public bool canLook;
         public LayerMask targetLayerMask;
-        public int magazineCapacity = 30;
 
         [HideInInspector] public PlayerInputController inputController;
         [HideInInspector] public PlayerAnimateController playerAnimateController;
@@ -47,7 +33,7 @@ namespace _GAME_.Scripts.Player
 
         private void Awake()
         {
-            currentBulletCount = magazineCapacity;
+            currentBulletCount = DataManager.Instance.GetPlayerBaseAttackData().magazineCapacity;
             playerRigidBody = GetComponent<Rigidbody>();
             playerMoveTransform = transform;
             playerRotateTransform = playerMoveTransform.GetChild(0);
@@ -171,12 +157,12 @@ namespace _GAME_.Scripts.Player
         {
             playerAnimateController.Jump();
             playerMeshTrailController.ActivateTrail();
-            DOVirtual.DelayedCall(.05f, () => { SwitchState(new PlayerDashState(this, dashSpeed, dashDistance)); });
+            DOVirtual.DelayedCall(.05f, () => { SwitchState(new PlayerDashState(this)); });
         }
 
         private void Reload(object[] arguments)
         {
-            currentBulletCount = magazineCapacity;
+            currentBulletCount = DataManager.Instance.GetPlayerBaseAttackData().magazineCapacity;
         }
 
         private void Shot(object[] arguments)

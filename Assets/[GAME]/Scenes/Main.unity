@@ -1652,6 +1652,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1917833634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1917833636}
+  - component: {fileID: 1917833635}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1917833635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917833634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3b3045d4264e03a5f02faa3146a6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovementDataScriptableObject: {fileID: 11400000, guid: e82e6ec0533eb4ca1a6a661117b55796,
+    type: 2}
+  playerBaseAttackDataScriptableObject: {fileID: 11400000, guid: 4e782f1061901460cad4ac6862bcb354,
+    type: 2}
+  dashSkillDataScriptableObject: {fileID: 11400000, guid: 66964832ecb404483a04b6f3c6b62ceb,
+    type: 2}
+  grenadeSkillDataScriptableObject: {fileID: 11400000, guid: b3fb5c114e1d04e2d8323eb78e1a73b2,
+    type: 2}
+  shotGunSkillDataScriptableObject: {fileID: 11400000, guid: 7031eb7df4e394d8c9b365eef57d5fe8,
+    type: 2}
+  stunSkillDataScriptableObject: {fileID: 11400000, guid: 89044bbf438d9491c90df23bac246470,
+    type: 2}
+  enemyDataScriptableObject: {fileID: 11400000, guid: 20c8964354cf347238cfeea33651125b,
+    type: 2}
+--- !u!4 &1917833636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917833634}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &156946822404647916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1748,3 +1806,4 @@ SceneRoots:
   - {fileID: 937840444}
   - {fileID: 1036403787}
   - {fileID: 1807969367}
+  - {fileID: 1917833636}

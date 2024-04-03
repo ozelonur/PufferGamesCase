@@ -13,9 +13,6 @@ namespace _GAME_.Scripts.Player.Bullet
 
         [SerializeField] private GameObject hitPrefab;
 
-        [Header("Configurations")] [SerializeField]
-        private int baseDamage = 30;
-
         #endregion
         
         #region Private Variables
@@ -55,7 +52,7 @@ namespace _GAME_.Scripts.Player.Bullet
                 Vector3 playerPos = PlayerManager.Instance.GetPlayer().playerMoveTransform.position;
                 Vector3 enemyPos = enemy.transform.position;
 
-                float damageForPerPellet = baseDamage / _totalPelletCount;
+                float damageForPerPellet = DataManager.Instance.GetShotgunSkillData().baseDamage / _totalPelletCount;
 
                 float distance = Vector3.Distance(playerPos, enemyPos);
 

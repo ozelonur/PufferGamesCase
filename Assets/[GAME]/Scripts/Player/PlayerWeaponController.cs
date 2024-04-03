@@ -101,7 +101,6 @@ namespace _GAME_.Scripts.Player
 
             bullet.InitBullet(bulletSpawnPoint);
 
-            // DOVirtual.DelayedCall(0.01f, () => bullet.transform.parent = null).SetLink(bullet.gameObject);
             bullet.transform.parent = null;
         }
 

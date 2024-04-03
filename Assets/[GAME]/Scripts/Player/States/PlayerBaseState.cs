@@ -1,5 +1,6 @@
 using _GAME_.Scripts.Core.StateMachine;
 using _GAME_.Scripts.Extensions;
+using _GAME_.Scripts.Managers;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Player.States
@@ -33,13 +34,13 @@ namespace _GAME_.Scripts.Player.States
         {
             this.stateMachine = stateMachine;
             rigidBody = this.stateMachine.playerRigidBody;
-            speed = stateMachine.speed;
+            speed = DataManager.Instance.GetPlayerMovementData().speed;
             playerAnimateController = this.stateMachine.playerAnimateController;
             moveTransform = this.stateMachine.playerMoveTransform;
             rotateTransform = this.stateMachine.playerRotateTransform;
             playerInputController = this.stateMachine.inputController;
             mainCamera = UnityEngine.Camera.main;
-            visionRadius = this.stateMachine.visionRadius;
+            visionRadius = DataManager.Instance.GetPlayerBaseAttackData().radius;
             targetLayerMask = stateMachine.targetLayerMask;
             weaponTransform = stateMachine.weaponTransform;
         }
@@ -100,7 +101,7 @@ namespace _GAME_.Scripts.Player.States
                     Quaternion targetRotation = Quaternion.LookRotation(lookAtTarget - rotateTransform.position);
 
                     rotateTransform.rotation = Quaternion.Slerp(rotateTransform.rotation, targetRotation,
-                        stateMachine.mouseSensitivity * Time.deltaTime);
+                        DataManager.Instance.GetPlayerMovementData().mouseSensitivity * Time.deltaTime);
                 }
             }
 
@@ -117,7 +118,7 @@ namespace _GAME_.Scripts.Player.States
                 Quaternion rotation = Quaternion.LookRotation(relative, Vector3.up);
 
                 rotateTransform.rotation =
-                    Quaternion.RotateTowards(rotateTransform.rotation, rotation, stateMachine.turnSpeed * deltaTime);
+                    Quaternion.RotateTowards(rotateTransform.rotation, rotation, DataManager.Instance.GetPlayerMovementData().turnSpeed * deltaTime);
             }
         }
 

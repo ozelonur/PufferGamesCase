@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _GAME_.Scripts.Enemy;
+using _GAME_.Scripts.Managers;
 using UnityEngine;
 
 namespace _GAME_.Scripts.Player.Bullet
@@ -61,7 +62,7 @@ namespace _GAME_.Scripts.Player.Bullet
 
             if (other.transform.TryGetComponent(out EnemyHealthController enemy))
             {
-                enemy.TakeDamage(5);
+                enemy.TakeDamage(DataManager.Instance.GetPlayerBaseAttackData().baseDamage);
             }
 
             collided = true;

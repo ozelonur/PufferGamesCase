@@ -1,7 +1,9 @@
 using _GAME_.Scripts.GlobalVariables;
+using _GAME_.Scripts.Managers;
 using _GAME_.Scripts.Player.Bullet;
 using OrangeBear.EventSystem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _GAME_.Scripts.Player
 {
@@ -15,12 +17,27 @@ namespace _GAME_.Scripts.Player
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private Transform targetDirectionTransform;
 
-        [Header("Configurations")] [SerializeField]
-        private int pelletCount = 10;
-
-        [SerializeField] private float spreadAngle = 30f;
+        [Header("Configurations")]
         [SerializeField] private float shotPower = 20f;
-        [SerializeField] private float maxDistance = 6f;
+
+        #endregion
+
+        #region Private Variables
+
+        private int _pelletCount;
+        private float _maxDistance;
+        private float _spreadAngle;
+
+        #endregion
+
+        #region MonoBehaviour Methods
+
+        private void Start()
+        {
+            _pelletCount = DataManager.Instance.GetShotgunSkillData().pelletCount;
+            _maxDistance = DataManager.Instance.GetShotgunSkillData().range;
+            _spreadAngle = DataManager.Instance.GetShotgunSkillData().angle;
+        }
 
         #endregion
 
@@ -42,16 +59,14 @@ namespace _GAME_.Scripts.Player
         private void Fire(object[] arguments)
         {
             Roar(CustomEvents.ShakeCameraToShotGun);
-            for (int i = 0; i < pelletCount; i++)
+            for (int i = 0; i < _pelletCount; i++)
             {
-                // Oyuncunun ileri yönüne göre rastgele bir açı hesapla
-                float randomAngleY = Random.Range(-spreadAngle / 2, spreadAngle / 2);
-                // Oyuncunun ileri yönünü temel alarak Quaternion rotasyonunu hesapla
+                float randomAngleY = Random.Range(-_spreadAngle / 2, _spreadAngle / 2);
                 Quaternion pelletRotation = Quaternion.Euler(0, randomAngleY, 0) * Quaternion.LookRotation(targetDirectionTransform.forward);
 
                 ShotGunBullet pellet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation * pelletRotation);
         
-                pellet.Shot(shotPower, maxDistance, pelletCount);
+                pellet.Shot(shotPower, _maxDistance, _pelletCount);
             }
         }
 

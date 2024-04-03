@@ -1,3 +1,4 @@
+using _GAME_.Scripts.Managers;
 using Vector3 = UnityEngine.Vector3;
 
 namespace _GAME_.Scripts.Player.States
@@ -17,11 +18,11 @@ namespace _GAME_.Scripts.Player.States
 
         #region Constructor
 
-        public PlayerDashState(PlayerStateMachine stateMachine, float dashSpeed, float dashDistance) : base(
+        public PlayerDashState(PlayerStateMachine stateMachine) : base(
             stateMachine)
         {
-            _dashSpeed = dashSpeed;
-            _dashDistance = dashDistance;
+            _dashSpeed = DataManager.Instance.GetPlayerMovementData().speed * 3.5f;
+            _dashDistance = DataManager.Instance.GetDashSkillData().dashDistance;
         }
 
         #endregion

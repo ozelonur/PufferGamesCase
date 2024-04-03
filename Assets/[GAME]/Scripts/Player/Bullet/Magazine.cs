@@ -34,13 +34,12 @@ namespace _GAME_.Scripts.Player.Bullet
             }
 
             transform.localEulerAngles = Vector3.zero;
-            
+
             Destroy(gameObject, 2f);
         }
 
         #endregion
-
-
+        
         #region Event Methods
 
         protected override void CheckRoarings(bool status)

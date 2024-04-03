@@ -1,4 +1,5 @@
 using _GAME_.Scripts.Enemy;
+using _GAME_.Scripts.Managers;
 using DG.Tweening;
 using OrangeBear.EventSystem;
 using UnityEngine;
@@ -7,14 +8,6 @@ namespace _GAME_.Scripts.Player.Bullet
 {
     public class OilAreaController : Bear
     {
-        #region Serialized Fields
-
-        [Header("Configurations")] [SerializeField]
-        private float radius;
-
-        [SerializeField] private float effectTime;
-
-        #endregion
 
         #region Private Variables
 
@@ -22,6 +15,8 @@ namespace _GAME_.Scripts.Player.Bullet
         private bool isDestroying;
         private float _timer;
         private LayerMask _layerMask;
+        private float _effectTime;
+        private float _radius;
 
         #endregion
 
@@ -29,12 +24,14 @@ namespace _GAME_.Scripts.Player.Bullet
 
         private void Awake()
         {
+            _effectTime = DataManager.Instance.GetStunSkillData().stunTime;
+            _radius = DataManager.Instance.GetStunSkillData().impactAreaRadius;
             transform.GetChild(0).localScale = Vector3.zero;
         }
 
         private void Update()
         {
-            if (_timer >= effectTime && !isDestroying)
+            if (_timer >= _effectTime && !isDestroying)
             {
                 GoSmallAndDestroy();
             }
@@ -46,7 +43,7 @@ namespace _GAME_.Scripts.Player.Bullet
 
             _timer += Time.deltaTime;
 
-            Collider[] colliders = Physics.OverlapSphere(transform.position, radius, _layerMask);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _radius, _layerMask);
 
             foreach (Collider col in colliders)
             {
@@ -71,7 +68,7 @@ namespace _GAME_.Scripts.Player.Bullet
             Vector3 pos = transform.position;
             pos.y = 0f;
             transform.position = pos;
-            transform.GetChild(0).DOScale(Vector3.one * radius * 2, .35f).SetEase(Ease.Linear).OnComplete(() =>
+            transform.GetChild(0).DOScale(Vector3.one * _radius * 2, .35f).SetEase(Ease.Linear).OnComplete(() =>
             {
                 canEffectEnemies = true;
             });

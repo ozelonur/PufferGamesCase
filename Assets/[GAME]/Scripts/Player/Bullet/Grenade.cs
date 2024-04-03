@@ -1,5 +1,6 @@
 using _GAME_.Scripts.Enemy;
 using _GAME_.Scripts.GlobalVariables;
+using _GAME_.Scripts.Managers;
 using DG.Tweening;
 using OrangeBear.EventSystem;
 using UnityEngine;
@@ -14,11 +15,6 @@ namespace _GAME_.Scripts.Player.Bullet
         private ParticleSystem explodeParticle;
 
         [SerializeField] private GameObject model;
-
-        [Header("Configurations")] [SerializeField]
-        private float impactRadius = 2;
-
-        [SerializeField] private int grenadeBaseDamage;
 
         [SerializeField] private LayerMask layerMask;
 
@@ -71,6 +67,8 @@ namespace _GAME_.Scripts.Player.Bullet
 
         private void TryGiveDamage()
         {
+            float impactRadius = DataManager.Instance.GetGrenadeSkillData().bombImpactRadius;
+            float baseDamage = DataManager.Instance.GetGrenadeSkillData().bombBaseDamage;
             Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius, layerMask);
 
             if (colliders.Length <= 0) return;
@@ -82,7 +80,7 @@ namespace _GAME_.Scripts.Player.Bullet
                 Vector3 enemyPos = enemy.transform.position;
                 float distance = Vector3.Distance(enemyPos, transform.position);
 
-                float damage = grenadeBaseDamage + (impactRadius * 2 - distance);
+                float damage = baseDamage + (impactRadius * 2 - distance);
                         
                 enemy.TakeDamage(damage);
             }

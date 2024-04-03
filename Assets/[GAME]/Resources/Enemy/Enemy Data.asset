@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9b02f1eb7d40ffbd7ff9a0e320a60a, type: 3}
+  m_Name: Enemy Data
+  m_EditorClassIdentifier: 
+  data:
+    maxHealth: 100
+    damagePower: 5
+    visionRadius: 10
+    patrolPointCircleRadius: 2
+    patrolPointMinCount: 3
+    patrolPointMaxCount: 5
+    minWaitTime: 3
+    maxWaitTime: 6
