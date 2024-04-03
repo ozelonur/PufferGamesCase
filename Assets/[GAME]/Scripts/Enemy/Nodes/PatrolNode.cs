@@ -14,11 +14,10 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         private EnemyAnimateController _enemyAnimateController;
         private EnemyHealthController _enemyHealthController;
+        private EnemyBehaviorTree _enemyBehaviorTree;
         private NavMeshAgent _navMeshAgent;
 
         private int _currentWaypointIndex;
-
-        private float _waitTime = 1f;
         private float _waitCounter;
         private bool _isWaiting;
         private float _speed;
@@ -28,7 +27,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
         #region Constructor
 
         public PatrolNode(Transform transform, Transform[] waypoints, EnemyAnimateController enemyAnimateController,
-            NavMeshAgent navMeshAgent, EnemyHealthController enemyHealthController)
+            NavMeshAgent navMeshAgent, EnemyHealthController enemyHealthController, EnemyBehaviorTree enemyBehaviorTree)
         {
             _transform = transform;
             _waypoints = waypoints;
@@ -36,6 +35,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
             _navMeshAgent = navMeshAgent;
             _speed = _navMeshAgent.speed;
             _enemyHealthController = enemyHealthController;
+            _enemyBehaviorTree = enemyBehaviorTree;
         }
 
         #endregion
@@ -50,7 +50,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 return state;
             }
 
-            if (_enemyHealthController.IsDead)
+            if (_enemyHealthController.IsDead || _enemyHealthController.IsDamaged || _enemyBehaviorTree.isSlipping)
             {
                 state = NodeState.FAILURE;
                 return state;
@@ -60,7 +60,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
             {
                 _waitCounter += Time.deltaTime;
 
-                if (_waitCounter >= _waitTime)
+                if (_waitCounter >= _enemyBehaviorTree.GetWaitTime())
                 {
                     _isWaiting = false;
                     _enemyAnimateController.Walk(true);

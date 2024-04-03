@@ -221,13 +221,14 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPointsCircleRadius: 2
+  patrolPointMinCount: 3
+  patrolPointMaxCount: 5
+  minWaitTime: 2
+  maxWaitTime: 4
+  waypoints: []
   isGettingHit: 0
+  isSlipping: 0
 --- !u!195 &4286559975776315285
 NavMeshAgent:
   m_ObjectHideFlags: 0

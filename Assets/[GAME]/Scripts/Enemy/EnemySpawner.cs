@@ -1,16 +1,18 @@
+using _GAME_.Scripts.Core.Manager;
+using _GAME_.Scripts.Extensions;
 using _GAME_.Scripts.GlobalVariables;
-using OrangeBear.EventSystem;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace _GAME_.Scripts.Enemy
 {
-    public class EnemySpawner : Bear
+    public class EnemySpawner : Manager<EnemySpawner>
     {
         #region Serialized Fields
 
         [Header("Components")] [SerializeField]
         private EnemyController enemyPrefab;
+
+        [SerializeField] public Transform wayPointsParent;
 
         #endregion
 
@@ -48,7 +50,7 @@ namespace _GAME_.Scripts.Enemy
 
         private void SpawnEnemies()
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 5; i++)
             {
                 SpawnEnemy();
             }
@@ -56,9 +58,9 @@ namespace _GAME_.Scripts.Enemy
 
         private void SpawnEnemy()
         {
-            float angle = Random.Range(0f, Mathf.PI * 2);
+            float angle = RandomExtensions.GetRandom(0f, Mathf.PI * 2);
 
-            float offset = Random.Range(5, 40);
+            float offset = RandomExtensions.GetRandom(5, 45);
             Vector3 spawnPosition = new(
                 _playerTransform.position.x + (_spawnDistance + offset) * Mathf.Cos(angle),
                 _playerTransform.position.y,

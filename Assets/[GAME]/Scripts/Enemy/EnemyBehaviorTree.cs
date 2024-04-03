@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _GAME_.Scripts.Core.BehaviorTree;
 using _GAME_.Scripts.Enemy.Nodes;
+using _GAME_.Scripts.Extensions;
 using UnityEngine;
 using UnityEngine.AI;
 using Tree = _GAME_.Scripts.Core.BehaviorTree.Tree;
@@ -14,6 +15,12 @@ namespace _GAME_.Scripts.Enemy
         [Header("Configurations")] [SerializeField]
         private LayerMask layerMask;
 
+        [SerializeField] private float patrolPointsCircleRadius;
+        [SerializeField] private int patrolPointMinCount;
+        [SerializeField] private int patrolPointMaxCount;
+        [SerializeField] private float minWaitTime;
+        [SerializeField] private float maxWaitTime;
+
         #endregion
 
         #region Public Variables
@@ -24,6 +31,7 @@ namespace _GAME_.Scripts.Enemy
 
         public bool isGettingHit;
         public bool isSlipping;
+        
 
         #endregion
 
@@ -44,7 +52,15 @@ namespace _GAME_.Scripts.Enemy
             _enemyHealthController = GetComponent<EnemyHealthController>();
             _enemyDissolveController = GetComponent<EnemyDissolveController>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        protected override void Start()
+        {
+            waypoints = GeneratePatrolPoints(RandomExtensions.GetRandom(patrolPointMinCount, patrolPointMaxCount),
+                patrolPointsCircleRadius);
+
             _enemyAnimateController.SetBehaviourTree(this);
+            base.Start();
         }
 
         #endregion
@@ -74,7 +90,7 @@ namespace _GAME_.Scripts.Enemy
                         new CheckPlayerInFOVRangeNode(transform, layerMask, _enemyHealthController),
                         new GoToTargetNode(transform, _enemyAnimateController, _navMeshAgent, _enemyHealthController)
                     }),
-                new PatrolNode(transform, waypoints, _enemyAnimateController, _navMeshAgent, _enemyHealthController)
+                new PatrolNode(transform, waypoints, _enemyAnimateController, _navMeshAgent, _enemyHealthController, this)
             });
 
             return root;
@@ -88,6 +104,40 @@ namespace _GAME_.Scripts.Enemy
         {
             isSlipping = true;
             _enemyAnimateController.Slip();
+        }
+
+        public float GetWaitTime()
+        {
+            return RandomExtensions.GetRandom(minWaitTime, maxWaitTime);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private Transform[] GeneratePatrolPoints(int wayPointCount, float radius)
+        {
+            Transform[] patrolPoints = new Transform[wayPointCount];
+
+            for (int i = 0; i < wayPointCount; i++)
+            {
+                float angle = i * Mathf.PI * 2f / wayPointCount;
+                Vector3 pointPosition = new Vector3(Mathf.Cos(angle) * radius, 0, Mathf.Sin(angle) * radius) +
+                                        transform.position;
+
+                GameObject point = new("Waypoint_" + i)
+                {
+                    transform =
+                    {
+                        position = pointPosition,
+                        parent = EnemySpawner.Instance.wayPointsParent
+                    }
+                };
+
+                patrolPoints[i] = point.transform;
+            }
+
+            return patrolPoints;
         }
 
         #endregion

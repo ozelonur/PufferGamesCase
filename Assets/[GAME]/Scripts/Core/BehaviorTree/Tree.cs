@@ -6,7 +6,7 @@ namespace _GAME_.Scripts.Core.BehaviorTree
     {
         private Node _root;
 
-        protected void Start()
+        protected virtual void Start()
         {
             _root = SetupTree();
         }
