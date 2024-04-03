@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _GAME_.Scripts.Core.BehaviorTree;
 using _GAME_.Scripts.Enemy.Nodes;
 using _GAME_.Scripts.Extensions;
+using _GAME_.Scripts.GlobalVariables;
 using UnityEngine;
 using UnityEngine.AI;
 using Tree = _GAME_.Scripts.Core.BehaviorTree.Tree;
@@ -31,7 +32,6 @@ namespace _GAME_.Scripts.Enemy
 
         public bool isGettingHit;
         public bool isSlipping;
-        
 
         #endregion
 
@@ -71,7 +71,8 @@ namespace _GAME_.Scripts.Enemy
         {
             Node root = new Selector(new List<Node>
             {
-                new DieNode(_enemyHealthController, _navMeshAgent, _enemyAnimateController, _enemyDissolveController),
+                new DieNode(_enemyHealthController, _navMeshAgent, _enemyAnimateController, _enemyDissolveController,
+                    this),
                 new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent, this),
                 new ReceivingDamageNode(this, _navMeshAgent),
                 new SlipNode(this, _navMeshAgent),
@@ -90,7 +91,8 @@ namespace _GAME_.Scripts.Enemy
                         new CheckPlayerInFOVRangeNode(transform, layerMask, _enemyHealthController),
                         new GoToTargetNode(transform, _enemyAnimateController, _navMeshAgent, _enemyHealthController)
                     }),
-                new PatrolNode(transform, waypoints, _enemyAnimateController, _navMeshAgent, _enemyHealthController, this)
+                new PatrolNode(transform, waypoints, _enemyAnimateController, _navMeshAgent, _enemyHealthController,
+                    this)
             });
 
             return root;
@@ -104,6 +106,11 @@ namespace _GAME_.Scripts.Enemy
         {
             isSlipping = true;
             _enemyAnimateController.Slip();
+        }
+
+        public void Die()
+        {
+            Roar(CustomEvents.EnemyDead, this);
         }
 
         public float GetWaitTime()

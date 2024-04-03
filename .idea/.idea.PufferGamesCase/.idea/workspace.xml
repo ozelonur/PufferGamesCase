@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Ciathyza/Gridbox Prototype Materials/Materials/Standard/Prototype_512x512_Grey2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Ciathyza/Gridbox Prototype Materials/Materials/Standard/Prototype_512x512_Grey2.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Core/BehaviorTree/Tree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Core/BehaviorTree/Tree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main/NavMesh-Ground.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main/NavMesh-Ground.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/Nodes/PatrolNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/Nodes/PatrolNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/Nodes/DieNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/Nodes/DieNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/GlobalVariables/CustomEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/GlobalVariables/CustomEvents.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +108,7 @@
       <workItem from="1711926106581" duration="1929000" />
       <workItem from="1711981320805" duration="17447000" />
       <workItem from="1712066344845" duration="15260000" />
-      <workItem from="1712154827594" duration="1652000" />
+      <workItem from="1712154827594" duration="2997000" />
     </task>
     <servers />
   </component>

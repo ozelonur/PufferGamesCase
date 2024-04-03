@@ -33,5 +33,7 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string DisableShotGun = nameof(DisableShotGun);
         public const string DisableShotGunRange = nameof(DisableShotGunRange);
         public const string ShakeCameraToShotGun = nameof(ShakeCameraToShotGun);
+
+        public const string EnemyDead = nameof(EnemyDead);
     }
 }

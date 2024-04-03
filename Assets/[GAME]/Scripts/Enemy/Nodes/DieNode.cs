@@ -10,6 +10,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
         private EnemyHealthController _enemyHealthController;
         private EnemyAnimateController _enemyAnimateController;
         private EnemyDissolveController _enemyDissolveController;
+        private EnemyBehaviorTree _enemyBehaviorTree;
         private NavMeshAgent _navMeshAgent;
 
         #endregion
@@ -17,12 +18,14 @@ namespace _GAME_.Scripts.Enemy.Nodes
         #region Constructor
 
         public DieNode(EnemyHealthController enemyHealthController, NavMeshAgent navMeshAgent,
-            EnemyAnimateController enemyAnimateController, EnemyDissolveController enemyDissolveController)
+            EnemyAnimateController enemyAnimateController, EnemyDissolveController enemyDissolveController, EnemyBehaviorTree enemyBehaviorTree)
         {
             _enemyHealthController = enemyHealthController;
             _enemyAnimateController = enemyAnimateController;
             _navMeshAgent = navMeshAgent;
             _enemyDissolveController = enemyDissolveController;
+
+            _enemyBehaviorTree = enemyBehaviorTree;
         }
 
         #endregion
@@ -36,6 +39,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 _navMeshAgent.speed = 0;
                 _enemyAnimateController.Die();
                 _enemyDissolveController.DissolveMesh(1.5f);
+                _enemyBehaviorTree.Die();
                 state = NodeState.RUNNING;
             }
             else

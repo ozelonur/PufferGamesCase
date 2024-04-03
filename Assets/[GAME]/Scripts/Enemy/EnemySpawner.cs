@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _GAME_.Scripts.Core.Manager;
 using _GAME_.Scripts.Extensions;
 using _GAME_.Scripts.GlobalVariables;
@@ -10,9 +11,10 @@ namespace _GAME_.Scripts.Enemy
         #region Serialized Fields
 
         [Header("Components")] [SerializeField]
-        private EnemyController enemyPrefab;
+        private EnemyBehaviorTree enemyPrefab;
 
         [SerializeField] public Transform wayPointsParent;
+        [SerializeField] private int minEnemyCountConCurrentInMap;
 
         #endregion
 
@@ -20,6 +22,7 @@ namespace _GAME_.Scripts.Enemy
 
         private Transform _playerTransform;
         private float _spawnDistance = 10f;
+        private List<EnemyBehaviorTree> _enemyBehaviorTrees = new();
 
         #endregion
 
@@ -30,11 +33,28 @@ namespace _GAME_.Scripts.Enemy
             if (status)
             {
                 Register(CustomEvents.SetPlayerTransform, GetPlayerTransform);
+                Register(CustomEvents.EnemyDead, EnemyDead);
             }
 
             else
             {
                 Unregister(CustomEvents.SetPlayerTransform, GetPlayerTransform);
+                Unregister(CustomEvents.EnemyDead, EnemyDead);
+            }
+        }
+
+        private void EnemyDead(object[] arguments)
+        {
+            EnemyBehaviorTree enemy = (EnemyBehaviorTree)arguments[0];
+
+            if (_enemyBehaviorTrees.Contains(enemy))
+            {
+                _enemyBehaviorTrees.Remove(enemy);
+            }
+
+            if (_enemyBehaviorTrees.Count < minEnemyCountConCurrentInMap)
+            {
+                SpawnEnemy();
             }
         }
 
@@ -50,7 +70,7 @@ namespace _GAME_.Scripts.Enemy
 
         private void SpawnEnemies()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 SpawnEnemy();
             }
@@ -67,7 +87,8 @@ namespace _GAME_.Scripts.Enemy
                 _playerTransform.position.z + (_spawnDistance + offset) * Mathf.Sin(angle)
             );
 
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            EnemyBehaviorTree enemyBehaviorTree = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            _enemyBehaviorTrees.Add(enemyBehaviorTree);
         }
 
         #endregion
