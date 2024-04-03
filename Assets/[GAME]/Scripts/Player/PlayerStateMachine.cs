@@ -155,6 +155,7 @@ namespace _GAME_.Scripts.Player
 
         private void Dash(object[] arguments)
         {
+            Roar(CustomEvents.StartCoolDown, SkillType.Dash);
             playerAnimateController.Jump();
             playerMeshTrailController.ActivateTrail();
             DOVirtual.DelayedCall(.05f, () => { SwitchState(new PlayerDashState(this)); });
@@ -189,6 +190,11 @@ namespace _GAME_.Scripts.Player
         public void DisableShotGunRange()
         {
             Roar(CustomEvents.DisableShotGunRange);
+        }
+
+        public void TriggerCooldown(SkillType skillType)
+        {
+            Roar(CustomEvents.StartCoolDown, skillType);
         }
 
         #endregion

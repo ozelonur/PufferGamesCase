@@ -1,4 +1,5 @@
 using _GAME_.Scripts.Extensions;
+using _GAME_.Scripts.GlobalVariables;
 using _GAME_.Scripts.Managers;
 using UnityEngine;
 
@@ -84,6 +85,7 @@ namespace _GAME_.Scripts.Player.States
             _projection.DisableLineAndIndicator();
             playerAnimateController.ThrowOilBomb();
             playerAnimateController.SetLayerWeight(1,1);
+            stateMachine.TriggerCooldown(SkillType.Stun);
             
         }
 

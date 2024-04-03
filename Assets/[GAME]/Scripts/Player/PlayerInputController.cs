@@ -1,4 +1,5 @@
 using _GAME_.Scripts.GlobalVariables;
+using _GAME_.Scripts.Helpers;
 using _GAME_.Scripts.Managers;
 using OrangeBear.EventSystem;
 using UnityEngine;
@@ -91,6 +92,12 @@ namespace _GAME_.Scripts.Player
             {
                 return;
             }
+
+            if (SkillCooldownHelper.IsSkillOnCooldown(SkillType.Dash, DataManager.Instance.GetDashSkillData().coolDown))
+            {
+                return;
+            }
+
             Roar(CustomEvents.Dash);
         }
 
@@ -100,6 +107,13 @@ namespace _GAME_.Scripts.Player
             {
                 return;
             }
+
+            if (SkillCooldownHelper.IsSkillOnCooldown(SkillType.Grenade,
+                    DataManager.Instance.GetGrenadeSkillData().coolDown))
+            {
+                return;
+            }
+
             Roar(CustomEvents.ThrowGrenade);
         }
 
@@ -109,7 +123,13 @@ namespace _GAME_.Scripts.Player
             {
                 return;
             }
-            
+
+            if (SkillCooldownHelper.IsSkillOnCooldown(SkillType.Shotgun,
+                    DataManager.Instance.GetShotgunSkillData().coolDown))
+            {
+                return;
+            }
+
             Roar(CustomEvents.EnableShotgun);
         }
 
@@ -119,7 +139,12 @@ namespace _GAME_.Scripts.Player
             {
                 return;
             }
-            
+
+            if (SkillCooldownHelper.IsSkillOnCooldown(SkillType.Stun, DataManager.Instance.GetStunSkillData().coolDown))
+            {
+                return;
+            }
+
             Roar(CustomEvents.ThrowOilBomb);
         }
 

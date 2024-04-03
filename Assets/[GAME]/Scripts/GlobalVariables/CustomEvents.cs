@@ -35,5 +35,7 @@ namespace _GAME_.Scripts.GlobalVariables
         public const string ShakeCameraToShotGun = nameof(ShakeCameraToShotGun);
 
         public const string EnemyDead = nameof(EnemyDead);
+
+        public const string StartCoolDown = nameof(StartCoolDown);
     }
 }

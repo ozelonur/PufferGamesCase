@@ -14,6 +14,8 @@ namespace _GAME_.Scripts.UI
         [Header("Components")] [SerializeField]
         private GameObject mainMenuPanel;
 
+        [SerializeField] private GameObject gamePanel;
+
         [SerializeField] private Button startButton;
 
         #endregion
@@ -22,6 +24,7 @@ namespace _GAME_.Scripts.UI
 
         private void Awake()
         {
+            gamePanel.SetActive(false);
             startButton.onClick.AddListener(OnClickStartButton);
         }
 
@@ -57,6 +60,7 @@ namespace _GAME_.Scripts.UI
         private void OnClickStartButton()
         {
             mainMenuPanel.SetActive(false);
+            gamePanel.SetActive(true);
             Roar(CustomEvents.OnGameStart);
         }
 
