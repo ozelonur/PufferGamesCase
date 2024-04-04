@@ -12,6 +12,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         private NavMeshAgent _navMeshAgent;
         private EnemyBehaviorTree _enemyBehaviorTree;
+        private EnemyAnimateController _enemyAnimateController;
         private float _speed;
         private float _stunTime;
         private float _waitCounter;
@@ -20,12 +21,13 @@ namespace _GAME_.Scripts.Enemy.Nodes
 
         #region Constructor
 
-        public SlipNode(EnemyBehaviorTree enemyBehaviorTree, NavMeshAgent navMeshAgent)
+        public SlipNode(EnemyBehaviorTree enemyBehaviorTree, NavMeshAgent navMeshAgent, EnemyAnimateController enemyAnimateController)
         {
             _enemyBehaviorTree = enemyBehaviorTree;
             _navMeshAgent = navMeshAgent;
             _speed = _navMeshAgent.speed;
             _stunTime = DataManager.Instance.GetStunSkillData().stunTime;
+            _enemyAnimateController = enemyAnimateController;
         }
 
         #endregion
@@ -49,6 +51,7 @@ namespace _GAME_.Scripts.Enemy.Nodes
                 else
                 {
                     _enemyBehaviorTree.isSlipping = false;
+                    _enemyAnimateController.SetIdle();
                 }
             }
             else

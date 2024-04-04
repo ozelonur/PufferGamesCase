@@ -76,7 +76,7 @@ namespace _GAME_.Scripts.Enemy
                     this),
                 new ReceiveDamageNode(_enemyAnimateController, _enemyHealthController, _navMeshAgent, this),
                 new ReceivingDamageNode(this, _navMeshAgent),
-                new SlipNode(this, _navMeshAgent),
+                new SlipNode(this, _navMeshAgent, _enemyAnimateController),
                 new Sequence
                 (
                     new List<Node>

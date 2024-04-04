@@ -6,18 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Materials/Bear_4.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Materials/Bear_4.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Meshes/Bear.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Meshes/Bear.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Prefabs/BearAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Prefabs/BearAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Prefabs/Bear_4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Prefabs/Bear_4.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Demo_Animals/DemoData/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Demo_Animals/DemoData/Ground.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyAnimateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyAnimateController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyBehaviorTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyDissolveController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyDissolveController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/Nodes/SlipNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/Nodes/SlipNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

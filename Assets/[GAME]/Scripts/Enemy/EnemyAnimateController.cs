@@ -92,7 +92,8 @@ namespace _GAME_.Scripts.Enemy
 
             else
             {
-                _animator.SetBool(WalkForward, false);
+                _animator.SetBool(WalkForward,false);
+                _animator.SetBool(Idle,false);
                 _animator.SetBool(StunnedLoop, true);
             }
         }
@@ -107,8 +108,15 @@ namespace _GAME_.Scripts.Enemy
             {
                 _animator.SetBool(WalkForward,false);
                 _animator.SetBool(Idle,false);
-                _animator.SetBool(GetHitFront,false);
                 _animator.SetTrigger(Death);
+            }
+        }
+
+        public void SetIdle()
+        {
+            if (type != EnemyType.Robot)
+            {
+                _animator.SetBool(Idle, true);
             }
         }
 
@@ -124,13 +132,23 @@ namespace _GAME_.Scripts.Enemy
         [UsedImplicitly]
         private void GetHitStarted()
         {
+            if (type != EnemyType.Robot)
+            {
+                _animator.SetBool(WalkForward,false);
+                _animator.SetBool(Idle,false);
+            }
             _enemyBehaviorTree.isGettingHit = true;
         }
 
         [UsedImplicitly]
         private void GetHitStopped()
         {
+            Debug.Log("Get Hit stopped!");
             _enemyBehaviorTree.isGettingHit = false;
+            if (type != EnemyType.Robot)
+            {
+                _animator.SetBool(Idle,true);
+            }
         }
 
         [UsedImplicitly]

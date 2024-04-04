@@ -8326,6 +8326,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 443137168228803121, guid: 880b5cf1d068240ad97a4fcf8a3988c8, type: 3}
   - {fileID: 1931788685879659622, guid: 727fd64b818f140228b61dbccf3033a1, type: 3}
+  - {fileID: 8314716651597280820, guid: 0b77b6a26d863404399334519aca1d3b, type: 3}
   wayPointsParent: {fileID: 1710579595}
   minEnemyCountConCurrentInMap: 10
   spawnCheckRadius: 2
