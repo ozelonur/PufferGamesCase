@@ -21,6 +21,8 @@ namespace _GAME_.Scripts.Player.States
         protected LayerMask targetLayerMask;
         protected NavMeshAgent navMeshAgent;
 
+        protected Quaternion targetQuaternion;
+
 
         protected float speed;
         protected float visionRadius;
@@ -67,6 +69,11 @@ namespace _GAME_.Scripts.Player.States
             {
                 Vector3 direction = input.ToIso() * (input.magnitude * speed);
 
+                if (direction != Vector3.zero)
+                {
+                    targetQuaternion = Quaternion.LookRotation(direction, Vector3.up);
+                }
+
                 Vector3 targetPosition = moveTransform.position + direction;
                 navMeshAgent.SetDestination(targetPosition);
 
@@ -101,6 +108,8 @@ namespace _GAME_.Scripts.Player.States
                     lookAtTarget.y = rotateTransform.position.y;
                     Quaternion targetRotation = Quaternion.LookRotation(lookAtTarget - rotateTransform.position);
 
+                    targetQuaternion = targetRotation;
+
                     rotateTransform.rotation = Quaternion.Slerp(rotateTransform.rotation, targetRotation,
                         DataManager.Instance.GetPlayerMovementData().mouseSensitivity * Time.deltaTime);
                 }
@@ -117,6 +126,8 @@ namespace _GAME_.Scripts.Player.States
                                    moveTransform.position;
 
                 Quaternion rotation = Quaternion.LookRotation(relative, Vector3.up);
+
+                targetQuaternion = rotation;
 
                 rotateTransform.rotation =
                     Quaternion.RotateTowards(rotateTransform.rotation, rotation, DataManager.Instance.GetPlayerMovementData().turnSpeed * deltaTime);

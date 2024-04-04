@@ -13,6 +13,7 @@ namespace _GAME_.Scripts.Player.States
         private float _rotationSpeed;
         public float _rotationThreshold;
         private float _shortestDistance = float.MaxValue;
+        private float _frameCount;
 
         #endregion
 
@@ -31,14 +32,34 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnEnter()
         {
-            look = false;
-            stateMachine.canLook = true;
         }
 
         public override void OnUpdate(float deltaTime)
         {
             input = playerInputController.moveVector.ToVector3XZ();
             CheckTargets();
+
+            if (_target != null)
+            {
+                float distanceToTarget = Vector3.Distance(moveTransform.position, _target.position);
+                bool isNearEdgeOfVision =
+                    distanceToTarget > (visionRadius * 0.9f) && distanceToTarget <= visionRadius;
+
+                float angleBetweenInputAndForward =
+                    Quaternion.Angle(stateMachine.playerRotateTransform.rotation, targetQuaternion);
+
+
+                if (isNearEdgeOfVision && angleBetweenInputAndForward >= 120)
+                {
+                    playerAnimateController.SetLayerWeight(1, 0);
+                    playerAnimateController.Shoot(false);
+                    stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+                    return;
+                }
+
+                look = false;
+                stateMachine.canLook = true;
+            }
 
             if (RotateToTheTargetAndGetReachStatus())
             {
@@ -104,7 +125,6 @@ namespace _GAME_.Scripts.Player.States
                             _target = nearestCollider.transform;
                         }
                     }
-                    
                 }
             }
         }

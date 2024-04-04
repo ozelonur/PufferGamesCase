@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementData:
     speed: 7.5
-    turnSpeed: 540
-    mouseSensitivity: 20
+    turnSpeed: 900
+    mouseSensitivity: 15

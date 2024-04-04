@@ -9,6 +9,7 @@ namespace _GAME_.Scripts.Player.States
         #region Private Variables
 
         private float _shortestDistance = float.MaxValue;
+        private float _frameCount;
 
         #endregion
 
@@ -21,8 +22,6 @@ namespace _GAME_.Scripts.Player.States
 
         public override void OnEnter()
         {
-            look = true;
-            stateMachine.canLook = false;
         }
 
         public override void OnUpdate(float deltaTime)
@@ -32,27 +31,45 @@ namespace _GAME_.Scripts.Player.States
                 return;
             }
 
-            Collider[] colliders = Physics.OverlapSphere(moveTransform.position, visionRadius, targetLayerMask);
-            
+            _frameCount++;
 
-            Collider nearestCollider = null;
-            _shortestDistance = float.MaxValue;
-
-            foreach (Collider collider in colliders)
+            if (_frameCount >= 30)
             {
-                float distance = Vector3.Distance(moveTransform.position, collider.transform.position);
+                _frameCount = 0;
+                Collider[] colliders = Physics.OverlapSphere(moveTransform.position, visionRadius, targetLayerMask);
 
-                if (distance < _shortestDistance)
+
+                Collider nearestCollider = null;
+                _shortestDistance = float.MaxValue;
+
+                foreach (Collider collider in colliders)
                 {
-                    _shortestDistance = distance;
-                    nearestCollider = collider;
+                    float distance = Vector3.Distance(moveTransform.position, collider.transform.position);
+
+                    if (distance < _shortestDistance)
+                    {
+                        _shortestDistance = distance;
+                        nearestCollider = collider;
+                    }
+                }
+
+                if (nearestCollider != null)
+                {
+                    float distanceToTarget = Vector3.Distance(moveTransform.position, nearestCollider.transform.position);
+                    bool isNearEdgeOfVision = distanceToTarget > (visionRadius * 0.9f) && distanceToTarget <= visionRadius;
+
+                    float angleBetweenInputAndForward = Quaternion.Angle(stateMachine.playerRotateTransform.rotation,
+                        targetQuaternion);
+
+                    if (!isNearEdgeOfVision || angleBetweenInputAndForward < 120)
+                    {
+                        stateMachine.SwitchState(new PlayerShootState(stateMachine, nearestCollider.transform));
+                    }
                 }
             }
-
-            if (nearestCollider != null)
-            {
-                stateMachine.SwitchState(new PlayerShootState(stateMachine, nearestCollider.transform));
-            }
+            
+            look = true;
+            stateMachine.canLook = false;
 
 
             input = playerInputController.moveVector.ToVector3XZ();
