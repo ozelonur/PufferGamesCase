@@ -4,6 +4,7 @@ using _GAME_.Scripts.Managers;
 using _GAME_.Scripts.Player.States;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _GAME_.Scripts.Player
 {
@@ -26,6 +27,7 @@ namespace _GAME_.Scripts.Player
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] public GameObject weapon;
         [SerializeField] public GameObject shotGun;
+        [SerializeField] public NavMeshAgent navMeshAgent;
 
         #endregion
 

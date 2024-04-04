@@ -2,6 +2,7 @@ using _GAME_.Scripts.Core.StateMachine;
 using _GAME_.Scripts.Extensions;
 using _GAME_.Scripts.Managers;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _GAME_.Scripts.Player.States
 {
@@ -18,6 +19,7 @@ namespace _GAME_.Scripts.Player.States
         protected Transform weaponTransform;
         protected UnityEngine.Camera mainCamera;
         protected LayerMask targetLayerMask;
+        protected NavMeshAgent navMeshAgent;
 
 
         protected float speed;
@@ -43,6 +45,9 @@ namespace _GAME_.Scripts.Player.States
             visionRadius = DataManager.Instance.GetPlayerBaseAttackData().radius;
             targetLayerMask = stateMachine.targetLayerMask;
             weaponTransform = stateMachine.weaponTransform;
+
+            navMeshAgent = this.stateMachine.navMeshAgent;
+            navMeshAgent.speed = speed;
         }
 
         #endregion
@@ -53,27 +58,23 @@ namespace _GAME_.Scripts.Player.States
         {
             if (!stateMachine.canLook)
             {
-                rigidBody.MovePosition(moveTransform.position + rotateTransform.forward *
-                    (input.magnitude * (speed * deltaTime)));
-                playerAnimateController.Move(input.ToVector2XZ() != Vector2.zero
-                    ? new Vector2(0, 1)
-                    : Vector2.zero);
+                Vector3 targetPosition = moveTransform.position + rotateTransform.forward * (input.magnitude * speed);
+                navMeshAgent.SetDestination(targetPosition);
+
+                playerAnimateController.Move(input.ToVector2XZ() != Vector2.zero ? new Vector2(0, 1) : Vector2.zero);
             }
             else
             {
-                Vector3 direction = input.ToIso() * (input.magnitude * (speed * deltaTime));
+                Vector3 direction = input.ToIso() * (input.magnitude * speed);
 
-                rigidBody.MovePosition(moveTransform.position + direction);
-
-                Vector3 forwardDirection = rotateTransform.forward;
-                Vector3 rightDirection = rotateTransform.right;
+                Vector3 targetPosition = moveTransform.position + direction;
+                navMeshAgent.SetDestination(targetPosition);
 
                 Vector3 normalizedDirection = direction.normalized;
+                float dotForward = Vector3.Dot(normalizedDirection, rotateTransform.forward);
+                float dotRight = Vector3.Dot(normalizedDirection, rotateTransform.right);
 
-                float dotForward = Vector3.Dot(normalizedDirection.normalized, forwardDirection);
-                float dotRight = Vector3.Dot(normalizedDirection.normalized, rightDirection);
-
-                Vector2 animationDirection = new(dotRight, dotForward);
+                Vector2 animationDirection = new Vector2(dotRight, dotForward);
                 playerAnimateController.Move(animationDirection);
             }
         }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player Movement Data
   m_EditorClassIdentifier: 
   movementData:
-    speed: 5
-    turnSpeed: 360
+    speed: 7.5
+    turnSpeed: 540
     mouseSensitivity: 20
