@@ -11,10 +11,14 @@ namespace _GAME_.Scripts.Enemy
         #region Serialized Fields
 
         [Header("Components")] [SerializeField]
-        private EnemyBehaviorTree enemyPrefab;
+        private EnemyBehaviorTree[] enemyPrefabs;
 
         [SerializeField] public Transform wayPointsParent;
         [SerializeField] private int minEnemyCountConCurrentInMap;
+        [SerializeField] private float spawnCheckRadius = 1f;
+        [SerializeField] private Vector2 spawnAreaMin;
+        [SerializeField] private Vector2 spawnAreaMax;
+        [SerializeField] private LayerMask layerMask;
 
         #endregion
 
@@ -78,17 +82,42 @@ namespace _GAME_.Scripts.Enemy
 
         private void SpawnEnemy()
         {
-            float angle = RandomExtensions.GetRandom(0f, Mathf.PI * 2);
+            bool validSpawnFound = false;
+            Vector3 spawnPosition = Vector3.zero;
+            int attemptCount = 0;
+            while (!validSpawnFound && attemptCount < 100)
+            {
+                float angle = RandomExtensions.GetRandom(0f, Mathf.PI * 2);
+                float offset = RandomExtensions.GetRandom(5, 45);
+                spawnPosition = new Vector3(
+                    _playerTransform.position.x + (_spawnDistance + offset) * Mathf.Cos(angle),
+                    _playerTransform.position.y,
+                    _playerTransform.position.z + (_spawnDistance + offset) * Mathf.Sin(angle)
+                );
 
-            float offset = RandomExtensions.GetRandom(5, 45);
-            Vector3 spawnPosition = new(
-                _playerTransform.position.x + (_spawnDistance + offset) * Mathf.Cos(angle),
-                _playerTransform.position.y,
-                _playerTransform.position.z + (_spawnDistance + offset) * Mathf.Sin(angle)
-            );
 
-            EnemyBehaviorTree enemyBehaviorTree = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            _enemyBehaviorTrees.Add(enemyBehaviorTree);
+                if (spawnPosition.x >= spawnAreaMin.x && spawnPosition.x <= spawnAreaMax.x &&
+                    spawnPosition.z >= spawnAreaMin.y && spawnPosition.z <= spawnAreaMax.y)
+                {
+                    if (!Physics.CheckSphere(spawnPosition, spawnCheckRadius, layerMask))
+                    {
+                        validSpawnFound = true;
+                    }
+                }
+
+                attemptCount++;
+            }
+
+            if (validSpawnFound)
+            {
+                EnemyBehaviorTree enemyBehaviorTree = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
+                    spawnPosition, Quaternion.identity);
+                _enemyBehaviorTrees.Add(enemyBehaviorTree);
+            }
+            else
+            {
+                Debug.LogWarning("Valid spawn position not found after 100 attempts.");
+            }
         }
 
         #endregion

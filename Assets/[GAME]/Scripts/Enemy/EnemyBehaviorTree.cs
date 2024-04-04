@@ -21,6 +21,7 @@ namespace _GAME_.Scripts.Enemy
         [SerializeField] private int patrolPointMaxCount;
         [SerializeField] private float minWaitTime;
         [SerializeField] private float maxWaitTime;
+        [SerializeField] public EnemyType enemyType;
 
         #endregion
 

@@ -17,6 +17,7 @@ namespace _GAME_.Scripts.Enemy
         private float dissolveRate = .0125f;
 
         [SerializeField] private float refreshRate = .025f;
+        [SerializeField] private float delayAmount;
 
         #endregion
 
@@ -54,12 +55,12 @@ namespace _GAME_.Scripts.Enemy
                 yield break;
             }
 
-            // yield return new WaitForSeconds(delay);
 
             _dissolving = true;
 
             vfx.Play();
             float counter = 0;
+            yield return new WaitForSeconds(delayAmount);
 
             while (_materials[0].GetFloat("_DissolveAmount") < 1)
             {

@@ -7,6 +7,13 @@ namespace _GAME_.Scripts.Enemy
 {
     public class EnemyAnimateController : Bear
     {
+        #region Serialized Fields
+
+        [Header("Configurations")] [SerializeField]
+        private EnemyType type;
+
+        #endregion
+
         #region Private Variables
 
         private Animator _animator;
@@ -14,6 +21,11 @@ namespace _GAME_.Scripts.Enemy
         private static readonly int WalkKey = Animator.StringToHash("Walk");
         private static readonly int DieKey = Animator.StringToHash("Die");
         private static readonly int SlipKey = Animator.StringToHash("Slip");
+        private static readonly int WalkForward = Animator.StringToHash("WalkForward");
+        private static readonly int GetHitFront = Animator.StringToHash("Get Hit Front");
+        private static readonly int StunnedLoop = Animator.StringToHash("Stunned Loop");
+        private static readonly int Death = Animator.StringToHash("Death");
+        private static readonly int Idle = Animator.StringToHash("Idle");
 
         #endregion
 
@@ -30,29 +42,74 @@ namespace _GAME_.Scripts.Enemy
 
         public void Walk(bool status)
         {
-            _animator.SetBool(WalkKey, status);
+            if (type == EnemyType.Robot)
+            {
+                _animator.SetBool(WalkKey, status);
+            }
+
+            else
+            {
+                if (!status)
+                {
+                    _animator.SetBool(Idle, true);
+                    _animator.SetBool(WalkForward, false);
+                }
+
+                else
+                {
+                    _animator.SetBool(Idle, false);
+                    _animator.SetBool(WalkForward, true);
+                }
+            }
         }
 
         public void GetHit()
         {
-            int animationsCount = System.Enum.GetValues(typeof(EnemyHitAnimations)).Length;
-        
-            int randomIndex = Random.Range(0, animationsCount);
-        
-            EnemyHitAnimations selectedAnimation = (EnemyHitAnimations)randomIndex;
-        
-            _animator.SetTrigger(selectedAnimation.ToString());
+            if (type == EnemyType.Robot)
+            {
+                int animationsCount = System.Enum.GetValues(typeof(EnemyHitAnimations)).Length;
+
+                int randomIndex = Random.Range(0, animationsCount);
+
+                EnemyHitAnimations selectedAnimation = (EnemyHitAnimations)randomIndex;
+
+                _animator.SetTrigger(selectedAnimation.ToString());
+            }
+
+            else
+            {
+                _animator.SetTrigger(GetHitFront);
+            }
         }
 
         public void Slip()
         {
-            _animator.SetBool(WalkKey,false);
-            _animator.SetTrigger(SlipKey);
+            if (type == EnemyType.Robot)
+            {
+                _animator.SetBool(WalkKey, false);
+                _animator.SetTrigger(SlipKey);
+            }
+
+            else
+            {
+                _animator.SetBool(WalkForward, false);
+                _animator.SetBool(StunnedLoop, true);
+            }
         }
 
         public void Die()
         {
-            _animator.SetTrigger(DieKey);
+            if (type == EnemyType.Robot)
+            {
+                _animator.SetTrigger(DieKey);
+            }
+            else
+            {
+                _animator.SetBool(WalkForward,false);
+                _animator.SetBool(Idle,false);
+                _animator.SetBool(GetHitFront,false);
+                _animator.SetTrigger(Death);
+            }
         }
 
         public void SetBehaviourTree(EnemyBehaviorTree enemy)
@@ -79,7 +136,10 @@ namespace _GAME_.Scripts.Enemy
         [UsedImplicitly]
         private void EndSlip()
         {
-            _enemyBehaviorTree.isSlipping = false;
+            if (type == EnemyType.Robot)
+            {
+                _enemyBehaviorTree.isSlipping = false;
+            }
         }
 
         #endregion
