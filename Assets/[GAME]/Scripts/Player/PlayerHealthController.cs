@@ -20,9 +20,13 @@ namespace _GAME_.Scripts.Player
 
         private void Awake()
         {
-            _healthPoints = DataManager.Instance.GetPlayerBaseAttackData().maxHealth;
             _collider = GetComponent<Collider>();
             _playerAnimateController = transform.GetChild(0).GetChild(0).GetComponent<PlayerAnimateController>();
+        }
+
+        private void Start()
+        {
+            _healthPoints = DataManager.Instance.GetPlayerBaseAttackData().maxHealth;
         }
 
         #endregion

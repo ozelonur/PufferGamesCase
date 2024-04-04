@@ -33,7 +33,6 @@ namespace _GAME_.Scripts.Player
 
         private void Awake()
         {
-            currentBulletCount = DataManager.Instance.GetPlayerBaseAttackData().magazineCapacity;
             playerRigidBody = GetComponent<Rigidbody>();
             playerMoveTransform = transform;
             playerRotateTransform = playerMoveTransform.GetChild(0);
@@ -46,6 +45,7 @@ namespace _GAME_.Scripts.Player
 
         private void Start()
         {
+            currentBulletCount = DataManager.Instance.GetPlayerBaseAttackData().magazineCapacity;
             PlayerManager.Instance.SetPlayer(this);
             Roar(CustomEvents.SetPlayerTransform, playerMoveTransform);
         }

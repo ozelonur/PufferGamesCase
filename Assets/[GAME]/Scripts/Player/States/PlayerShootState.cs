@@ -50,7 +50,6 @@ namespace _GAME_.Scripts.Player.States
                 playerAnimateController.SetLayerWeight(1, 0);
                 playerAnimateController.Shoot(false);
             }
-
         }
 
         public override void OnFixedUpdate(float fixedDeltaTime)
@@ -79,9 +78,12 @@ namespace _GAME_.Scripts.Player.States
         {
             Collider[] colliders = Physics.OverlapSphere(moveTransform.position, visionRadius, targetLayerMask);
 
-            if (!colliders.Contains(_target.GetComponent<Collider>()))
+            if (_target != null)
             {
-                _target = null;
+                if (!colliders.Contains(_target.GetComponent<Collider>()))
+                {
+                    _target = null;
+                }
             }
 
             _shortestDistance = float.MaxValue;
@@ -95,10 +97,14 @@ namespace _GAME_.Scripts.Player.States
                     _shortestDistance = distance;
                     Collider nearestCollider = collider;
 
-                    if (_target.transform != nearestCollider.transform)
+                    if (_target != null)
                     {
-                        _target = nearestCollider.transform;
+                        if (_target.transform != nearestCollider.transform)
+                        {
+                            _target = nearestCollider.transform;
+                        }
                     }
+                    
                 }
             }
         }
@@ -112,9 +118,9 @@ namespace _GAME_.Scripts.Player.States
             }
 
             Quaternion targetRotation = Quaternion.LookRotation(_target.position - rotateTransform.position);
-    
+
             Vector3 targetLocalPosition = weaponTransform.InverseTransformPoint(_target.position);
-    
+
             if (targetLocalPosition.x < 0)
             {
                 targetRotation *= Quaternion.Euler(0, -10f, 0);
@@ -124,12 +130,11 @@ namespace _GAME_.Scripts.Player.States
                 targetRotation *= Quaternion.Euler(0, 10f, 0);
             }
 
-            rotateTransform.rotation = Quaternion.Slerp(rotateTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            rotateTransform.rotation =
+                Quaternion.Slerp(rotateTransform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
             return Quaternion.Dot(rotateTransform.rotation, targetRotation) > _rotationThreshold;
         }
-
-
 
         #endregion
     }

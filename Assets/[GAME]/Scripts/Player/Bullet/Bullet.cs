@@ -30,6 +30,8 @@ namespace _GAME_.Scripts.Player.Bullet
         private Rigidbody bulletRigidBody;
         private bool _canMove;
 
+        private Vector3 _direction;
+
         #endregion
 
         #region MonoBehaviour Methods
@@ -154,6 +156,9 @@ namespace _GAME_.Scripts.Player.Bullet
                 ParticleSystem psChild = muzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
                 Destroy(muzzleVFX, psChild.main.duration);
             }
+
+            _direction = PlayerManager.Instance.GetPlayer().playerRotateTransform.forward;
+            transform.rotation = Quaternion.LookRotation(_direction);
 
             _canMove = true;
         }
