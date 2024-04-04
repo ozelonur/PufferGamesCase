@@ -122,15 +122,20 @@ namespace _GAME_.Scripts.Player.States
                     return;
                 }
 
-                Vector3 relative = (moveTransform.position + input.ToIso()) -
-                                   moveTransform.position;
+                Vector3 relative = (moveTransform.position + input.ToIso()) - moveTransform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(relative, Vector3.up);
 
-                Quaternion rotation = Quaternion.LookRotation(relative, Vector3.up);
+                float angle = Quaternion.Angle(rotateTransform.rotation, targetRotation);
 
-                targetQuaternion = rotation;
+                float baseTurnSpeed = DataManager.Instance.GetPlayerMovementData().turnSpeed;
+
+                float angleFactor = Mathf.Clamp(angle / 180f, 0.1f, 1f);
+                float turnSpeed = baseTurnSpeed * (1 + angleFactor);
+
+                targetQuaternion = targetRotation;
 
                 rotateTransform.rotation =
-                    Quaternion.RotateTowards(rotateTransform.rotation, rotation, DataManager.Instance.GetPlayerMovementData().turnSpeed * deltaTime);
+                    Quaternion.RotateTowards(rotateTransform.rotation, targetRotation, turnSpeed * deltaTime);
             }
         }
 
