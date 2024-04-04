@@ -63,6 +63,7 @@ namespace _GAME_.Scripts.Enemy
             }
         }
 
+        private bool _gettingHit;
         public void GetHit()
         {
             if (type == EnemyType.Robot)
@@ -78,7 +79,11 @@ namespace _GAME_.Scripts.Enemy
 
             else
             {
-                _animator.SetTrigger(GetHitFront);
+                if (!_gettingHit)
+                {
+                    _animator.SetTrigger(GetHitFront);
+                    _gettingHit = true;
+                }
             }
         }
 
@@ -143,10 +148,10 @@ namespace _GAME_.Scripts.Enemy
         [UsedImplicitly]
         private void GetHitStopped()
         {
-            Debug.Log("Get Hit stopped!");
             _enemyBehaviorTree.isGettingHit = false;
             if (type != EnemyType.Robot)
             {
+                _gettingHit = false;
                 _animator.SetBool(Idle,true);
             }
         }

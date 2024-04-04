@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e46a8cc-e9fb-458c-9ab3-b04cc574e960" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGamesCase/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_GetHitFromFront.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Bear/Bear_Animations/Bear_GetHitFromFront.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/BoarBoss/BoarBoss_Animations/BoarBoss_GetHitFromFront.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/BoarBoss/BoarBoss_Animations/BoarBoss_GetHitFromFront.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/BoarBoss/BoarBoss_Prefabs/BoarBossAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/BoarBoss/BoarBoss_Prefabs/BoarBossAnimator.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Demo_Animals/DemoData/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Demo_Animals/DemoData/Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Demo_Animals/DemoData/Ground.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blink/Art/Animals/Stylized/Demo_Animals/DemoData/Ground.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Bear.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Boar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Prefabs/Enemy/Boar.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyAnimateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/[GAME]/Scripts/Enemy/EnemyAnimateController.cs" afterDir="false" />
     </list>

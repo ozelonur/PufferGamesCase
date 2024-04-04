@@ -8327,6 +8327,7 @@ MonoBehaviour:
   - {fileID: 443137168228803121, guid: 880b5cf1d068240ad97a4fcf8a3988c8, type: 3}
   - {fileID: 1931788685879659622, guid: 727fd64b818f140228b61dbccf3033a1, type: 3}
   - {fileID: 8314716651597280820, guid: 0b77b6a26d863404399334519aca1d3b, type: 3}
+  - {fileID: 1287916460437335758, guid: 038105ffff2ed48718620a424d4ee741, type: 3}
   wayPointsParent: {fileID: 1710579595}
   minEnemyCountConCurrentInMap: 10
   spawnCheckRadius: 2
@@ -9217,6 +9218,11 @@ PrefabInstance:
       propertyPath: obstacleParent
       value: 
       objectReference: {fileID: 1036403787}
+    - target: {fileID: 6136291146282748616, guid: ddbe8ac66bfb841f5866c4723cad40d0,
+        type: 3}
+      propertyPath: glidingDuration
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

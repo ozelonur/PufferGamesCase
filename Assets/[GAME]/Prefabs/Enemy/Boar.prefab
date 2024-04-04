@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 5510708844385568849, guid: 880b5cf1d068240ad97a4fcf8a3988c8,
         type: 3}
       propertyPath: m_Name
-      value: Boar Variant
+      value: Boar
       objectReference: {fileID: 0}
     - target: {fileID: 8645079338209571124, guid: 880b5cf1d068240ad97a4fcf8a3988c8,
         type: 3}
@@ -96,6 +96,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 547474253002755535, guid: 880b5cf1d068240ad97a4fcf8a3988c8, type: 3}
+    - {fileID: 8434340297212613125, guid: 880b5cf1d068240ad97a4fcf8a3988c8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6196362925583975658, guid: 880b5cf1d068240ad97a4fcf8a3988c8,
         type: 3}
