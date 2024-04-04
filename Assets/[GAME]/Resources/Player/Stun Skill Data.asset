@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Stun Skill Data
   m_EditorClassIdentifier: 
   data:
-    impactAreaRadius: 6
+    impactAreaRadius: 1
     stunTime: 1.5
     coolDown: 8
